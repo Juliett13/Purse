@@ -104,19 +104,19 @@
 		4964BACE20F22709006A236F /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
-				4964BAD020F2461F006A236F /* New Group */,
+				4964BAD020F2461F006A236F /* OperationsView */,
 				498C212220E788AF001F59FB /* MainViewController.swift */,
 			);
 			path = MainViewController;
 			sourceTree = "<group>";
 		};
-		4964BAD020F2461F006A236F /* New Group */ = {
+		4964BAD020F2461F006A236F /* OperationsView */ = {
 			isa = PBXGroup;
 			children = (
 				4964BAD120F249CE006A236F /* OperationsView.swift */,
 				4964BAD320F254D7006A236F /* OperationsViewProtocol.swift */,
 			);
-			path = "New Group";
+			path = OperationsView;
 			sourceTree = "<group>";
 		};
 		498C20E820E76798001F59FB = {

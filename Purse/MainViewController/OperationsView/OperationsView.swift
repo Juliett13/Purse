@@ -25,7 +25,7 @@ public class OperationsView: UIView, UIGestureRecognizerDelegate {
         containerView = UIView()
         visualEffectView.contentView.addSubview(containerView)
 
-        containerView.frame = CGRect(x: outsideDistance, y: outsideDistance , width: buttonSize * 3 + insideDistance * 4, height: buttonSize + 2 * insideDistance)
+        containerView.frame = CGRect(x: Int(UIScreen.main.bounds.width) - buttonSize - 3 * outsideDistance, y: outsideDistance , width: buttonSize + 2 * insideDistance, height: buttonSize * 3 + insideDistance * 4)
         
         containerView.backgroundColor = UIColor(red: 200.0 / 255.0, green: 200.0 / 255.0, blue: 200.0 / 255.0, alpha: 0.5)
         
@@ -33,9 +33,9 @@ public class OperationsView: UIView, UIGestureRecognizerDelegate {
         
         let incomeButton = UIButton(frame: CGRect(x: insideDistance, y: insideDistance, width: buttonSize, height: buttonSize))
 
-        let outcomeButton = UIButton(frame: CGRect(x: 2 * insideDistance + buttonSize, y: insideDistance, width: buttonSize, height: buttonSize))
+        let outcomeButton = UIButton(frame: CGRect(x: insideDistance, y: 2 * insideDistance + buttonSize, width: buttonSize, height: buttonSize))
 
-        let transferButton = UIButton(frame: CGRect(x: 3 * insideDistance + 2 * buttonSize, y: insideDistance, width: buttonSize, height: buttonSize))
+        let transferButton = UIButton(frame: CGRect(x: insideDistance, y: 3 * insideDistance + 2 * buttonSize, width: buttonSize, height: buttonSize))
 
         
         containerView.addSubview(incomeButton)
@@ -57,7 +57,7 @@ public class OperationsView: UIView, UIGestureRecognizerDelegate {
         outcomeButton.addTarget(self, action: #selector(self.outcomeButtonPress), for: .touchUpInside)
         transferButton.addTarget(self, action: #selector(self.transferButtonPress), for: .touchUpInside)
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleOutsideTap))
         tap.delegate = self
         visualEffectView.addGestureRecognizer(tap)
         
@@ -142,9 +142,9 @@ public class OperationsView: UIView, UIGestureRecognizerDelegate {
         hide()
     }
     
-    @objc func handleTap(sender: UITapGestureRecognizer? = nil) {
+    @objc func handleOutsideTap(sender: UITapGestureRecognizer? = nil) {
         self.onCancel?()
         hide()
     }
-
+    
 }
