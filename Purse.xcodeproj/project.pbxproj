@@ -11,6 +11,8 @@
 		493F6DD420EB3C13002B8120 /* DropDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493F6DD320EB3C13002B8120 /* DropDownButton.swift */; };
 		493F6DD620EB3C3A002B8120 /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493F6DD520EB3C3A002B8120 /* DropDownView.swift */; };
 		493F6DD820EB3C7B002B8120 /* DropDownProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493F6DD720EB3C7B002B8120 /* DropDownProtocol.swift */; };
+		4964BAD220F249CE006A236F /* OperationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4964BAD120F249CE006A236F /* OperationsView.swift */; };
+		4964BAD420F254D7006A236F /* OperationsViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4964BAD320F254D7006A236F /* OperationsViewProtocol.swift */; };
 		498C20F520E76798001F59FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498C20F420E76798001F59FB /* AppDelegate.swift */; };
 		498C20FA20E76798001F59FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 498C20F820E76798001F59FB /* Main.storyboard */; };
 		498C20FC20E7679D001F59FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 498C20FB20E7679D001F59FB /* Assets.xcassets */; };
@@ -44,6 +46,8 @@
 		493F6DD320EB3C13002B8120 /* DropDownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownButton.swift; sourceTree = "<group>"; };
 		493F6DD520EB3C3A002B8120 /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
 		493F6DD720EB3C7B002B8120 /* DropDownProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownProtocol.swift; sourceTree = "<group>"; };
+		4964BAD120F249CE006A236F /* OperationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsView.swift; sourceTree = "<group>"; };
+		4964BAD320F254D7006A236F /* OperationsViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsViewProtocol.swift; sourceTree = "<group>"; };
 		498C20F120E76798001F59FB /* Purse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Purse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		498C20F420E76798001F59FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		498C20F920E76798001F59FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -100,9 +104,19 @@
 		4964BACE20F22709006A236F /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
+				4964BAD020F2461F006A236F /* New Group */,
 				498C212220E788AF001F59FB /* MainViewController.swift */,
 			);
 			path = MainViewController;
+			sourceTree = "<group>";
+		};
+		4964BAD020F2461F006A236F /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				4964BAD120F249CE006A236F /* OperationsView.swift */,
+				4964BAD320F254D7006A236F /* OperationsViewProtocol.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		498C20E820E76798001F59FB = {
@@ -130,8 +144,8 @@
 		498C20F320E76798001F59FB /* Purse */ = {
 			isa = PBXGroup;
 			children = (
-				4964BACE20F22709006A236F /* MainViewController */,
 				493F6DD220EB3BD1002B8120 /* DropDownMenu */,
+				4964BACE20F22709006A236F /* MainViewController */,
 				498C20F420E76798001F59FB /* AppDelegate.swift */,
 				498C20F820E76798001F59FB /* Main.storyboard */,
 				498C20FB20E7679D001F59FB /* Assets.xcassets */,
@@ -353,7 +367,9 @@
 				493F6DD820EB3C7B002B8120 /* DropDownProtocol.swift in Sources */,
 				498C212320E788AF001F59FB /* MainViewController.swift in Sources */,
 				493F6DD420EB3C13002B8120 /* DropDownButton.swift in Sources */,
+				4964BAD420F254D7006A236F /* OperationsViewProtocol.swift in Sources */,
 				498C212720E78D0C001F59FB /* OperationTableViewCell.swift in Sources */,
+				4964BAD220F249CE006A236F /* OperationsView.swift in Sources */,
 				493F6DD620EB3C3A002B8120 /* DropDownView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

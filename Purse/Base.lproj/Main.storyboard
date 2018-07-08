@@ -81,25 +81,17 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="cra-MQ-CJN"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HSG-8H-mlm">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="rh1-9p-9kK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="25Z-sC-qfX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qqx-Ap-Szh" secondAttribute="trailing" constant="5" id="4Ne-c6-wnq"/>
                             <constraint firstItem="qqx-Ap-Szh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="7" id="Cqo-at-jre"/>
-                            <constraint firstItem="HSG-8H-mlm" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="LNh-RB-Ocz"/>
-                            <constraint firstItem="HSG-8H-mlm" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="clM-k2-6OS"/>
-                            <constraint firstItem="HSG-8H-mlm" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="eeS-xb-jqp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rh1-9p-9kK" secondAttribute="bottom" id="fsq-3B-ZOA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rh1-9p-9kK" secondAttribute="trailing" constant="5" id="her-0O-fsV"/>
                             <constraint firstItem="qqx-Ap-Szh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="pjt-YM-T5z"/>
                             <constraint firstItem="rh1-9p-9kK" firstAttribute="top" secondItem="qqx-Ap-Szh" secondAttribute="bottom" constant="88" id="qGZ-gx-LlS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rh1-9p-9kK" secondAttribute="bottom" constant="5" id="xkE-60-pDC"/>
-                            <constraint firstItem="HSG-8H-mlm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zJV-wm-kSn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <variation key="default">
@@ -111,6 +103,9 @@
                     <navigationItem key="navigationItem" id="jlB-6B-qEH">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="wDm-LZ-k5q">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="operationsButtonPress:" destination="BYZ-38-t0r" id="gFJ-gK-atp"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -153,7 +148,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h5Z-EV-wqt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="231" y="134"/>
+            <point key="canvasLocation" x="404" y="134"/>
         </scene>
     </scenes>
 </document>

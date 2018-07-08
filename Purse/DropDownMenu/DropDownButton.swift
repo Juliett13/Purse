@@ -24,10 +24,10 @@ class dropDownButton: UIButton, dropDownProtocol {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.layer.borderColor = UIColor.lightGray.cgColor
         self.setTitleColor(UIColor.black, for: .normal)
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 15
+        self.layer.borderColor = UIColor(red: 121.0 / 255.0, green: 190.0 / 255.0, blue: 112.0 / 255.0, alpha: 1).cgColor
         
         dropView = dropDownView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0))
         dropView.delegate = self
@@ -60,7 +60,7 @@ class dropDownButton: UIButton, dropDownProtocol {
             
             NSLayoutConstraint.activate([self.height])
             
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+            UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                 self.dropView.layoutIfNeeded()
                 self.dropView.center.y += self.dropView.frame.height / 2
             }, completion: nil)
@@ -71,7 +71,7 @@ class dropDownButton: UIButton, dropDownProtocol {
             NSLayoutConstraint.deactivate([self.height])
             self.height.constant = 0
             NSLayoutConstraint.activate([self.height])
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+            UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                 self.dropView.center.y -= self.dropView.frame.height / 2
                 self.dropView.layoutIfNeeded()
             }, completion: nil)
@@ -84,7 +84,7 @@ class dropDownButton: UIButton, dropDownProtocol {
         NSLayoutConstraint.deactivate([self.height])
         self.height.constant = 0
         NSLayoutConstraint.activate([self.height])
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
             self.dropView.center.y -= self.dropView.frame.height / 2
             self.dropView.layoutIfNeeded()
         }, completion: nil)

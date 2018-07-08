@@ -1,11 +1,50 @@
 import Foundation
 import UIKit
 
-class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+class MainViewController: UIViewController, OperationsViewProtocol {
+
+    var operationsView: OperationsView!
+
     var accountsButton = dropDownButton()
     
     @IBOutlet weak var sumLabel: UILabel!
+    
+    @IBAction func operationsButtonPress(_ sender: Any) {
+      
+        guard operationsView == nil else {
+            return
+        }
+        
+        operationsView = OperationsView()
+        
+        operationsView?.onIncomePress = {
+
+            self.operationsView = nil
+            
+        }
+        
+        operationsView?.onOutcomePress = {
+
+            self.operationsView = nil
+            
+        }
+        
+        operationsView?.onTransferPress = {
+
+            self.operationsView = nil
+            
+        }
+
+        operationsView?.onCancel = {
+            
+            self.operationsView = nil
+            
+        }
+
+        operationsView.show(in: self)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,14 +67,19 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         accountsButton.dropView.dropDownOptions = ["Acc1", "Acc2", "Acc3"] //
     }
-    
+}
+
+
+
+extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: OperationTableViewCell.reuseId, for: indexPath) as! OperationTableViewCell
-        cell.configure(for: "name13", and: 13)
+        cell.configure(for: "", and: 1)
         return cell
     }
 }

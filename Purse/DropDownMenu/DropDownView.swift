@@ -21,8 +21,8 @@ class dropDownView: UIView, UITableViewDelegate, UITableViewDataSource {
         super.init(frame: frame)
         
         tableView.layer.cornerRadius = 15
-        tableView.layer.borderColor = UIColor.lightGray.cgColor
         tableView.layer.borderWidth = 1
+        tableView.layer.borderColor = UIColor(red: 121.0 / 255.0, green: 190.0 / 255.0, blue: 112.0 / 255.0, alpha: 1).cgColor
 
         tableView.delegate = self
         tableView.dataSource = self
