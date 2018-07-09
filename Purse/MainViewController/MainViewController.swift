@@ -20,19 +20,22 @@ class MainViewController: UIViewController, OperationsViewProtocol {
         operationsView?.onIncomePress = {
 
             self.operationsView = nil
+            self.pushNewOperationVC(with: NewOperationViewController.operations.income.rawValue)
             
         }
         
         operationsView?.onOutcomePress = {
 
             self.operationsView = nil
-            
+            self.pushNewOperationVC(with: NewOperationViewController.operations.outgo.rawValue)
+
         }
         
         operationsView?.onTransferPress = {
 
             self.operationsView = nil
-            
+            self.pushNewOperationVC(with: NewOperationViewController.operations.transfer.rawValue)
+
         }
 
         operationsView?.onCancel = {
@@ -44,6 +47,12 @@ class MainViewController: UIViewController, OperationsViewProtocol {
         operationsView.show(in: self)
     }
     
+    func pushNewOperationVC(with operationType: Int) {
+        let targetViewController = self.storyboard?.instantiateViewController(withIdentifier: NewOperationViewController.reuseId) as! NewOperationViewController
+        targetViewController.operationType = operationType
+        self.navigationController?.pushViewController(targetViewController, animated: true)
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
