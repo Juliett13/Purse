@@ -1,13 +1,8 @@
-//
-//  DropDownView.swift
-//  Purse
-//
-//  Created by Kuroyan Juliett on 03.07.2018.
-//  Copyright © 2018 C3G9. All rights reserved.
-//
-
-import Foundation
 import UIKit
+
+protocol dropDownProtocol {
+    func dropDownPressed(title: String)
+}
 
 class dropDownView: UIView, UITableViewDelegate, UITableViewDataSource {
     
@@ -35,11 +30,10 @@ class dropDownView: UIView, UITableViewDelegate, UITableViewDataSource {
         tableView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         tableView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -58,7 +52,7 @@ class dropDownView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.delegate.dropDownPressed(string: dropDownOptions[indexPath.row])
+        self.delegate.dropDownPressed(title: dropDownOptions[indexPath.row])
         self.tableView.deselectRow(at: indexPath, animated: true)
     }
 }

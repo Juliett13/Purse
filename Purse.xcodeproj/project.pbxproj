@@ -10,9 +10,7 @@
 		490182F734454D49FDF48709 /* Pods_Purse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B3C91489A2F3C6DEED1518 /* Pods_Purse.framework */; };
 		493F6DD420EB3C13002B8120 /* DropDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493F6DD320EB3C13002B8120 /* DropDownButton.swift */; };
 		493F6DD620EB3C3A002B8120 /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493F6DD520EB3C3A002B8120 /* DropDownView.swift */; };
-		493F6DD820EB3C7B002B8120 /* DropDownProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493F6DD720EB3C7B002B8120 /* DropDownProtocol.swift */; };
-		4964BAD220F249CE006A236F /* OperationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4964BAD120F249CE006A236F /* OperationsView.swift */; };
-		4964BAD420F254D7006A236F /* OperationsViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4964BAD320F254D7006A236F /* OperationsViewProtocol.swift */; };
+		4964BAD220F249CE006A236F /* OperationTypesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4964BAD120F249CE006A236F /* OperationTypesView.swift */; };
 		496785CB20F2CEA00071CB8B /* NewOperationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496785CA20F2CEA00071CB8B /* NewOperationViewController.swift */; };
 		498C20F520E76798001F59FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498C20F420E76798001F59FB /* AppDelegate.swift */; };
 		498C20FA20E76798001F59FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 498C20F820E76798001F59FB /* Main.storyboard */; };
@@ -20,8 +18,21 @@
 		498C20FF20E7679D001F59FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 498C20FD20E7679D001F59FB /* LaunchScreen.storyboard */; };
 		498C210A20E7679E001F59FB /* PurseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498C210920E7679E001F59FB /* PurseTests.swift */; };
 		498C211520E7679E001F59FB /* PurseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498C211420E7679E001F59FB /* PurseUITests.swift */; };
-		498C212320E788AF001F59FB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498C212220E788AF001F59FB /* MainViewController.swift */; };
+		498C212320E788AF001F59FB /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498C212220E788AF001F59FB /* AccountsViewController.swift */; };
 		498C212720E78D0C001F59FB /* OperationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498C212620E78D0C001F59FB /* OperationTableViewCell.swift */; };
+		49A8529320FBA2AC0056684A /* LoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A8529220FBA2AC0056684A /* LoginTableViewCell.swift */; };
+		49C11B2A20FBD57D00715403 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C11B2920FBD57D00715403 /* UIView.swift */; };
+		49C11B2D20FBDF3E00715403 /* CheckProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C11B2C20FBDF3E00715403 /* CheckProfileViewController.swift */; };
+		49C11B2F20FBE00600715403 /* CheckProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C11B2E20FBE00600715403 /* CheckProfilePresenter.swift */; };
+		49D9A86920F334B30047B667 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D9A86820F334B30047B667 /* Server.swift */; };
+		49F043EB20FA5C8700C48E10 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F043EA20FA5C8700C48E10 /* User.swift */; };
+		49F043ED20FA5C9100C48E10 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F043EC20FA5C9100C48E10 /* Operation.swift */; };
+		49F043EF20FA5C9F00C48E10 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F043EE20FA5C9F00C48E10 /* Account.swift */; };
+		49F043F120FA5CAB00C48E10 /* OperationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F043F020FA5CAB00C48E10 /* OperationType.swift */; };
+		49F043FB20FA7A1700C48E10 /* AccountsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F043FA20FA7A1700C48E10 /* AccountsPresenter.swift */; };
+		49F043FD20FA7B7F00C48E10 /* NewOperationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F043FC20FA7B7E00C48E10 /* NewOperationPresenter.swift */; };
+		49F043FF20FA7BB100C48E10 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F043FE20FA7BB100C48E10 /* LoginPresenter.swift */; };
+		49F0440120FA7BC500C48E10 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F0440020FA7BC500C48E10 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,9 +57,7 @@
 		353EE7AB187D41026C517953 /* Pods-Purse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Purse.release.xcconfig"; path = "Pods/Target Support Files/Pods-Purse/Pods-Purse.release.xcconfig"; sourceTree = "<group>"; };
 		493F6DD320EB3C13002B8120 /* DropDownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownButton.swift; sourceTree = "<group>"; };
 		493F6DD520EB3C3A002B8120 /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
-		493F6DD720EB3C7B002B8120 /* DropDownProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownProtocol.swift; sourceTree = "<group>"; };
-		4964BAD120F249CE006A236F /* OperationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsView.swift; sourceTree = "<group>"; };
-		4964BAD320F254D7006A236F /* OperationsViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsViewProtocol.swift; sourceTree = "<group>"; };
+		4964BAD120F249CE006A236F /* OperationTypesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationTypesView.swift; sourceTree = "<group>"; };
 		496785CA20F2CEA00071CB8B /* NewOperationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOperationViewController.swift; sourceTree = "<group>"; };
 		498C20F120E76798001F59FB /* Purse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Purse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		498C20F420E76798001F59FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -62,8 +71,21 @@
 		498C211020E7679E001F59FB /* PurseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PurseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		498C211420E7679E001F59FB /* PurseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurseUITests.swift; sourceTree = "<group>"; };
 		498C211620E7679E001F59FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		498C212220E788AF001F59FB /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		498C212220E788AF001F59FB /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
 		498C212620E78D0C001F59FB /* OperationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationTableViewCell.swift; sourceTree = "<group>"; };
+		49A8529220FBA2AC0056684A /* LoginTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTableViewCell.swift; sourceTree = "<group>"; };
+		49C11B2920FBD57D00715403 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		49C11B2C20FBDF3E00715403 /* CheckProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckProfileViewController.swift; sourceTree = "<group>"; };
+		49C11B2E20FBE00600715403 /* CheckProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckProfilePresenter.swift; sourceTree = "<group>"; };
+		49D9A86820F334B30047B667 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		49F043EA20FA5C8700C48E10 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		49F043EC20FA5C9100C48E10 /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
+		49F043EE20FA5C9F00C48E10 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		49F043F020FA5CAB00C48E10 /* OperationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationType.swift; sourceTree = "<group>"; };
+		49F043FA20FA7A1700C48E10 /* AccountsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsPresenter.swift; sourceTree = "<group>"; };
+		49F043FC20FA7B7E00C48E10 /* NewOperationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOperationPresenter.swift; sourceTree = "<group>"; };
+		49F043FE20FA7BB100C48E10 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		49F0440020FA7BC500C48E10 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		68AEFEEABF80790164CDE05F /* Pods-Purse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Purse.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Purse/Pods-Purse.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,28 +120,8 @@
 			children = (
 				493F6DD320EB3C13002B8120 /* DropDownButton.swift */,
 				493F6DD520EB3C3A002B8120 /* DropDownView.swift */,
-				493F6DD720EB3C7B002B8120 /* DropDownProtocol.swift */,
 			);
 			path = DropDownMenu;
-			sourceTree = "<group>";
-		};
-		4964BACE20F22709006A236F /* MainViewController */ = {
-			isa = PBXGroup;
-			children = (
-				4964BAD020F2461F006A236F /* OperationsView */,
-				498C212220E788AF001F59FB /* MainViewController.swift */,
-				498C212620E78D0C001F59FB /* OperationTableViewCell.swift */,
-			);
-			path = MainViewController;
-			sourceTree = "<group>";
-		};
-		4964BAD020F2461F006A236F /* OperationsView */ = {
-			isa = PBXGroup;
-			children = (
-				4964BAD120F249CE006A236F /* OperationsView.swift */,
-				4964BAD320F254D7006A236F /* OperationsViewProtocol.swift */,
-			);
-			path = OperationsView;
 			sourceTree = "<group>";
 		};
 		498C20E820E76798001F59FB = {
@@ -147,14 +149,16 @@
 		498C20F320E76798001F59FB /* Purse */ = {
 			isa = PBXGroup;
 			children = (
+				49F043E920FA5C7900C48E10 /* Models */,
+				49F043F220FA786E00C48E10 /* Scenes */,
+				49D9A86720F334A70047B667 /* Server */,
 				493F6DD220EB3BD1002B8120 /* DropDownMenu */,
-				4964BACE20F22709006A236F /* MainViewController */,
 				498C20F420E76798001F59FB /* AppDelegate.swift */,
 				498C20F820E76798001F59FB /* Main.storyboard */,
 				498C20FB20E7679D001F59FB /* Assets.xcassets */,
 				498C20FD20E7679D001F59FB /* LaunchScreen.storyboard */,
 				498C210020E7679D001F59FB /* Info.plist */,
-				496785CA20F2CEA00071CB8B /* NewOperationViewController.swift */,
+				49C11B2920FBD57D00715403 /* UIView.swift */,
 			);
 			path = Purse;
 			sourceTree = "<group>";
@@ -175,6 +179,75 @@
 				498C211620E7679E001F59FB /* Info.plist */,
 			);
 			path = PurseUITests;
+			sourceTree = "<group>";
+		};
+		49C11B2B20FBDED500715403 /* CheckProfileExistence */ = {
+			isa = PBXGroup;
+			children = (
+				49C11B2C20FBDF3E00715403 /* CheckProfileViewController.swift */,
+				49C11B2E20FBE00600715403 /* CheckProfilePresenter.swift */,
+			);
+			path = CheckProfileExistence;
+			sourceTree = "<group>";
+		};
+		49D9A86720F334A70047B667 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				49D9A86820F334B30047B667 /* Server.swift */,
+			);
+			path = Server;
+			sourceTree = "<group>";
+		};
+		49F043E920FA5C7900C48E10 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				49F043EA20FA5C8700C48E10 /* User.swift */,
+				49F043EC20FA5C9100C48E10 /* Operation.swift */,
+				49F043EE20FA5C9F00C48E10 /* Account.swift */,
+				49F043F020FA5CAB00C48E10 /* OperationType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		49F043F220FA786E00C48E10 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				49C11B2B20FBDED500715403 /* CheckProfileExistence */,
+				49F043F520FA787A00C48E10 /* Login */,
+				49F043F420FA787700C48E10 /* Accounts */,
+				49F043F320FA787400C48E10 /* NewOperation */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		49F043F320FA787400C48E10 /* NewOperation */ = {
+			isa = PBXGroup;
+			children = (
+				496785CA20F2CEA00071CB8B /* NewOperationViewController.swift */,
+				49F043FC20FA7B7E00C48E10 /* NewOperationPresenter.swift */,
+			);
+			path = NewOperation;
+			sourceTree = "<group>";
+		};
+		49F043F420FA787700C48E10 /* Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				498C212220E788AF001F59FB /* AccountsViewController.swift */,
+				49F043FA20FA7A1700C48E10 /* AccountsPresenter.swift */,
+				498C212620E78D0C001F59FB /* OperationTableViewCell.swift */,
+				4964BAD120F249CE006A236F /* OperationTypesView.swift */,
+			);
+			path = Accounts;
+			sourceTree = "<group>";
+		};
+		49F043F520FA787A00C48E10 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				49F043FE20FA7BB100C48E10 /* LoginPresenter.swift */,
+				49F0440020FA7BC500C48E10 /* LoginViewController.swift */,
+				49A8529220FBA2AC0056684A /* LoginTableViewCell.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		6CBC6D34450E6D6DD1A9EA34 /* Frameworks */ = {
@@ -366,15 +439,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49F043FF20FA7BB100C48E10 /* LoginPresenter.swift in Sources */,
+				49C11B2F20FBE00600715403 /* CheckProfilePresenter.swift in Sources */,
+				49D9A86920F334B30047B667 /* Server.swift in Sources */,
+				49C11B2D20FBDF3E00715403 /* CheckProfileViewController.swift in Sources */,
+				49F043EF20FA5C9F00C48E10 /* Account.swift in Sources */,
 				498C20F520E76798001F59FB /* AppDelegate.swift in Sources */,
-				493F6DD820EB3C7B002B8120 /* DropDownProtocol.swift in Sources */,
-				498C212320E788AF001F59FB /* MainViewController.swift in Sources */,
+				498C212320E788AF001F59FB /* AccountsViewController.swift in Sources */,
+				49F043FB20FA7A1700C48E10 /* AccountsPresenter.swift in Sources */,
 				493F6DD420EB3C13002B8120 /* DropDownButton.swift in Sources */,
-				4964BAD420F254D7006A236F /* OperationsViewProtocol.swift in Sources */,
+				49A8529320FBA2AC0056684A /* LoginTableViewCell.swift in Sources */,
 				498C212720E78D0C001F59FB /* OperationTableViewCell.swift in Sources */,
 				496785CB20F2CEA00071CB8B /* NewOperationViewController.swift in Sources */,
-				4964BAD220F249CE006A236F /* OperationsView.swift in Sources */,
+				4964BAD220F249CE006A236F /* OperationTypesView.swift in Sources */,
 				493F6DD620EB3C3A002B8120 /* DropDownView.swift in Sources */,
+				49F043FD20FA7B7F00C48E10 /* NewOperationPresenter.swift in Sources */,
+				49F0440120FA7BC500C48E10 /* LoginViewController.swift in Sources */,
+				49F043F120FA5CAB00C48E10 /* OperationType.swift in Sources */,
+				49F043EB20FA5C8700C48E10 /* User.swift in Sources */,
+				49C11B2A20FBD57D00715403 /* UIView.swift in Sources */,
+				49F043ED20FA5C9100C48E10 /* Operation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
