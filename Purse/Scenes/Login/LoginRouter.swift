@@ -1,6 +1,7 @@
 import UIKit
 
 protocol LoginRouterProtocol {
+    func presentAccountsView()
 }
 
 class LoginRouter: LoginRouterProtocol {
@@ -10,4 +11,15 @@ class LoginRouter: LoginRouterProtocol {
         self.view = view
     }
     
+    func presentAccountsView() {
+        guard let view = view else {
+            return
+        }
+        
+        let targetVC = view.storyboard?.instantiateViewController(withIdentifier: AccountsViewController.reuseId) as! AccountsViewController
+        let router = AccountsRouter(view: targetVC)
+        let presenter = AccountsPresenter(view: targetVC, router: router)
+        targetVC.presenter = presenter
+        view.navigationController?.pushViewController(targetVC, animated: true)
+    }
 }

@@ -15,7 +15,7 @@ class CheckProfileViewController: UIViewController, CheckProfileViewProtocol {
     }
     
     override func viewDidLoad() {
-        let router = CheckProfileRouter(view: self) // move to config
-        presenter = CheckProfilePresenter(view: self, router: router) // move to config
+        let router = CheckProfileRouter(view: self)
+        presenter = CheckProfilePresenter(view: self, router: router)
     }
 }

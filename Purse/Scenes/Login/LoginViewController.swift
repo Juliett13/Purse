@@ -10,7 +10,7 @@ class LoginViewController: UIViewController, LoginViewProtocol {
  
     static let reuseId = "LoginViewController_reuseId"
     var presenter: LoginPresenterProtocol!
-    
+
     @IBOutlet private weak var button: UIButton!
     @IBOutlet private weak var tableView: UITableView!
    

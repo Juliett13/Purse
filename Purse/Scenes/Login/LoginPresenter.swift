@@ -16,10 +16,12 @@ class LoginPresenter: LoginPresenterProtocol {
     var actionType: ActionType
     
     unowned let view: LoginViewProtocol
+    internal let router: LoginRouterProtocol
     let fieldsCount = 2
     
-    init(view: LoginViewController, actionType: ActionType) {
+    init(view: LoginViewController, router: LoginRouterProtocol, actionType: ActionType) {
         self.view = view
+        self.router = router
         self.actionType = actionType
     }
     
@@ -65,5 +67,7 @@ class LoginPresenter: LoginPresenterProtocol {
         case .login: ()
             // 
         }
+        
+        router.presentAccountsView() //
     }
 }

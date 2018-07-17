@@ -9,7 +9,8 @@ protocol AccountsViewProtocol: class {
 class AccountsViewController: UIViewController, AccountsViewProtocol, OperationTypesViewProtocol {
     var operationTypesView: OperationTypesView!
 
-    private var accountsButton = dropDownButton()
+    static let reuseId = "AccountsViewController_reuseId"
+   private var accountsButton = dropDownButton()
     
     var presenter: AccountsPresenterProtocol!
 
@@ -31,8 +32,6 @@ class AccountsViewController: UIViewController, AccountsViewProtocol, OperationT
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let router = AccountsRouter(view: self) // move to config
-        presenter = AccountsPresenter(view: self, router: router) // move to config
         
         accountsButton = dropDownButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         self.view.addSubview(accountsButton)

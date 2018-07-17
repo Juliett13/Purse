@@ -217,7 +217,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="loginButtonPressed:" destination="Xth-tb-5BZ" eventType="touchUpInside" id="8ct-LD-G26"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="bnH-Vb-meV"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -235,6 +234,7 @@
                     <connections>
                         <outlet property="button" destination="Bsn-OO-wpZ" id="l7B-U4-bsP"/>
                         <outlet property="tableView" destination="8na-3g-RXG" id="ETy-9I-wuk"/>
+                        <segue destination="BYZ-38-t0r" kind="show" id="gMh-Tq-JLu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7fg-UU-AdE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -244,7 +244,7 @@
         <!--Accounts View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="AccountsViewController" customModule="Purse" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AccountsViewController_reuseId" id="BYZ-38-t0r" customClass="AccountsViewController" customModule="Purse" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
