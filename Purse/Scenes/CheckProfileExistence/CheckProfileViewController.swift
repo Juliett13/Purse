@@ -1,9 +1,6 @@
 import UIKit
 
-protocol CheckProfileViewProtocol: class {
-    func instantiateViewController(with reuseId: String) -> UIViewController? //
-    func push(_ viewController: UIViewController) //
-}
+protocol CheckProfileViewProtocol: class {}
 
 class CheckProfileViewController: UIViewController, CheckProfileViewProtocol {
     
@@ -18,14 +15,7 @@ class CheckProfileViewController: UIViewController, CheckProfileViewProtocol {
     }
     
     override func viewDidLoad() {
-        presenter = CheckProfilePresenter(view: self)
-    }
-    
-    func instantiateViewController(with reuseId: String) -> UIViewController? {
-        return storyboard?.instantiateViewController(withIdentifier: reuseId)
-    }
-
-    func push(_ viewController: UIViewController) {
-        navigationController?.pushViewController(viewController, animated: true)
+        let router = CheckProfileRouter(view: self) // move to config
+        presenter = CheckProfilePresenter(view: self, router: router) // move to config
     }
 }

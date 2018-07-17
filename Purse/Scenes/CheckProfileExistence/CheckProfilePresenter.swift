@@ -6,23 +6,18 @@ protocol CheckProfilePresenterProtocol {
 class CheckProfilePresenter: CheckProfilePresenterProtocol {
     
     unowned let view: CheckProfileViewProtocol
-    
-    init(view: CheckProfileViewProtocol) {
+    internal let router: CheckProfileRouterProtocol
+
+    init(view: CheckProfileViewProtocol, router: CheckProfileRouterProtocol) {
         self.view = view
+        self.router = router
     }
     
     func pushLoginVC() {
-        pushVC(with: LoginPresenter.ActionType.login)
+        router.presentLoginView()
     }
     
     func pushCreateProfileVC() {
-        pushVC(with: LoginPresenter.ActionType.createAccount)
-    }
-    
-    private func pushVC(with actionType: LoginPresenter.ActionType) {
-        let targetVC = self.view.instantiateViewController(with: LoginViewController.reuseId) as! LoginViewController
-        let presenter = LoginPresenter(view: targetVC,  actionType: actionType)
-        targetVC.presenter = presenter
-        self.view.push(targetVC)
+        router.presentCreateProfileView()
     }
 }

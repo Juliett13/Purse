@@ -4,8 +4,6 @@ import UIKit
 protocol AccountsViewProtocol: class {
     func setOperationTypesConfiguration(onIncomePressed: @escaping () -> ()?, onOutgoPressed: @escaping () -> ()?, onTransferPressed: @escaping () -> ()?)
     func setAccountsButtonConfiguration(with title: String, dropDownOptions: [String])
-    func instantiateViewController(with reuseId: String) -> UIViewController?
-    func push(_ viewController: UIViewController)
 }
 
 class AccountsViewController: UIViewController, AccountsViewProtocol, OperationTypesViewProtocol {
@@ -33,7 +31,8 @@ class AccountsViewController: UIViewController, AccountsViewProtocol, OperationT
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = AccountsPresenter(view: self) // !!
+        let router = AccountsRouter(view: self) // move to config
+        presenter = AccountsPresenter(view: self, router: router) // move to config
         
         accountsButton = dropDownButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         self.view.addSubview(accountsButton)
@@ -59,14 +58,6 @@ class AccountsViewController: UIViewController, AccountsViewProtocol, OperationT
         verticalConstraint.isActive = true
         accountsButton.translatesAutoresizingMaskIntoConstraints = false 
         super.updateViewConstraints()
-    }
-    
-    func instantiateViewController(with reuseId: String) -> UIViewController? {
-        return storyboard?.instantiateViewController(withIdentifier: reuseId)
-    }
-    
-    func push(_ viewController: UIViewController) {
-        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 

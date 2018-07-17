@@ -1,5 +1,4 @@
 protocol AccountsPresenterProtocol {
-    init(view: AccountsViewController)
     var operationsCount: Int { get }
     func configureAccountsButton()
     func configureOperationTypesView()
@@ -9,6 +8,8 @@ protocol AccountsPresenterProtocol {
 class AccountsPresenter: AccountsPresenterProtocol {
     
     unowned let view: AccountsViewProtocol 
+    internal let router: AccountsRouterProtocol
+
     private var operations = [Operation]()
     var operationsCount: Int {
         get {
@@ -16,33 +17,26 @@ class AccountsPresenter: AccountsPresenterProtocol {
         }
     }
     
-    required init(view: AccountsViewController) {
+    required init(view: AccountsViewController, router: AccountsRouterProtocol) {
         self.view = view
+        self.router = router
 //        self.operations = 
     }
 
     func configureOperationTypesView() {
         let onIncomePressed = { [weak self] in
-            self?.pushNewOperationVC(with: Operation.operations.income)
+            self?.router.pushNewOperationView(with: Operation.operations.income)
         }
 
         let onOutgoPressed = { [weak self] in
-            self?.pushNewOperationVC(with: Operation.operations.outgo)
+            self?.router.pushNewOperationView(with: Operation.operations.outgo)
         }
         
         let onTransferPressed = { [weak self] in
-            self?.pushNewOperationVC(with: Operation.operations.transfer)
+            self?.router.pushNewOperationView(with: Operation.operations.transfer)
         }
 
         view.setOperationTypesConfiguration(onIncomePressed: onIncomePressed, onOutgoPressed: onOutgoPressed, onTransferPressed: onTransferPressed)
-    }
-    
-    func pushNewOperationVC(with operationType: Operation.operations) {
-        let targetVC = self.view.instantiateViewController(with: NewOperationViewController.reuseId) as! NewOperationViewController
-        
-        let presenter = NewOperationPresenter(view: targetVC, operationType: operationType.rawValue)
-        targetVC.presenter = presenter
-        self.view.push(targetVC)
     }
     
     func configureAccountsButton() {

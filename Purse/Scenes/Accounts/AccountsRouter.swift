@@ -1,11 +1,24 @@
+import UIKit
 
+protocol AccountsRouterProtocol {
+    func pushNewOperationView(with operationType: Operation.operations) 
+}
 
-//
-//  Accountsrouter.swift
-//  Purse
-//
-//  Created by Kuroyan Juliett on 17.07.2018.
-//  Copyright © 2018 C3G9. All rights reserved.
-//
-
-import Foundation
+class AccountsRouter: AccountsRouterProtocol {
+    weak var view: AccountsViewController?
+    
+    init(view: AccountsViewController?) {
+        self.view = view
+    }
+    
+    func pushNewOperationView(with operationType: Operation.operations) {
+        guard let view = view else {
+            return
+        }
+        
+        let targetVC = view.storyboard?.instantiateViewController(withIdentifier: NewOperationViewController.reuseId) as! NewOperationViewController
+        let presenter = NewOperationPresenter(view: targetVC, operationType: operationType.rawValue)
+        targetVC.presenter = presenter
+        view.navigationController?.pushViewController(targetVC, animated: true)
+    }
+}

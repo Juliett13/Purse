@@ -1,9 +1,33 @@
-//
-//  CheckProfileRouter.swift
-//  Purse
-//
-//  Created by Kuroyan Juliett on 17.07.2018.
-//  Copyright © 2018 C3G9. All rights reserved.
-//
+import UIKit
 
-import Foundation
+protocol CheckProfileRouterProtocol {
+    func presentLoginView()
+    func presentCreateProfileView()
+}
+
+class CheckProfileRouter: CheckProfileRouterProtocol {
+    weak var view: CheckProfileViewController?
+    
+    init(view: CheckProfileViewController?) {
+        self.view = view
+    }
+    
+    func presentLoginView() {
+        pushView(with: .login)
+    }
+    
+    func presentCreateProfileView() {
+        pushView(with: .createAccount)
+    }
+    
+    private func pushView(with actionType: LoginPresenter.ActionType) {
+        guard let view = view else {
+            return
+        }
+        
+        let targetVC = view.storyboard?.instantiateViewController(withIdentifier: LoginViewController.reuseId) as! LoginViewController
+        let presenter = LoginPresenter(view: targetVC,  actionType: actionType)
+        targetVC.presenter = presenter
+        view.navigationController?.pushViewController(targetVC, animated: true)
+    }
+}

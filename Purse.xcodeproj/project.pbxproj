@@ -24,6 +24,9 @@
 		49C11B2A20FBD57D00715403 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C11B2920FBD57D00715403 /* UIView.swift */; };
 		49C11B2D20FBDF3E00715403 /* CheckProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C11B2C20FBDF3E00715403 /* CheckProfileViewController.swift */; };
 		49C11B2F20FBE00600715403 /* CheckProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C11B2E20FBE00600715403 /* CheckProfilePresenter.swift */; };
+		49C5F8BA20FDA6FA001386AC /* CheckProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C5F8B920FDA6FA001386AC /* CheckProfileRouter.swift */; };
+		49C5F8BE20FDB738001386AC /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C5F8BD20FDB738001386AC /* LoginRouter.swift */; };
+		49C5F8C020FDB77A001386AC /* AccountsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C5F8BF20FDB77A001386AC /* AccountsRouter.swift */; };
 		49D9A86920F334B30047B667 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D9A86820F334B30047B667 /* Server.swift */; };
 		49F043EB20FA5C8700C48E10 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F043EA20FA5C8700C48E10 /* User.swift */; };
 		49F043ED20FA5C9100C48E10 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F043EC20FA5C9100C48E10 /* Operation.swift */; };
@@ -77,6 +80,9 @@
 		49C11B2920FBD57D00715403 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		49C11B2C20FBDF3E00715403 /* CheckProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckProfileViewController.swift; sourceTree = "<group>"; };
 		49C11B2E20FBE00600715403 /* CheckProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckProfilePresenter.swift; sourceTree = "<group>"; };
+		49C5F8B920FDA6FA001386AC /* CheckProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckProfileRouter.swift; sourceTree = "<group>"; };
+		49C5F8BD20FDB738001386AC /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		49C5F8BF20FDB77A001386AC /* AccountsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsRouter.swift; sourceTree = "<group>"; };
 		49D9A86820F334B30047B667 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		49F043EA20FA5C8700C48E10 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		49F043EC20FA5C9100C48E10 /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
@@ -186,6 +192,7 @@
 			children = (
 				49C11B2C20FBDF3E00715403 /* CheckProfileViewController.swift */,
 				49C11B2E20FBE00600715403 /* CheckProfilePresenter.swift */,
+				49C5F8B920FDA6FA001386AC /* CheckProfileRouter.swift */,
 			);
 			path = CheckProfileExistence;
 			sourceTree = "<group>";
@@ -236,6 +243,7 @@
 				49F043FA20FA7A1700C48E10 /* AccountsPresenter.swift */,
 				498C212620E78D0C001F59FB /* OperationTableViewCell.swift */,
 				4964BAD120F249CE006A236F /* OperationTypesView.swift */,
+				49C5F8BF20FDB77A001386AC /* AccountsRouter.swift */,
 			);
 			path = Accounts;
 			sourceTree = "<group>";
@@ -246,6 +254,7 @@
 				49F043FE20FA7BB100C48E10 /* LoginPresenter.swift */,
 				49F0440020FA7BC500C48E10 /* LoginViewController.swift */,
 				49A8529220FBA2AC0056684A /* LoginTableViewCell.swift */,
+				49C5F8BD20FDB738001386AC /* LoginRouter.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -441,12 +450,14 @@
 			files = (
 				49F043FF20FA7BB100C48E10 /* LoginPresenter.swift in Sources */,
 				49C11B2F20FBE00600715403 /* CheckProfilePresenter.swift in Sources */,
+				49C5F8C020FDB77A001386AC /* AccountsRouter.swift in Sources */,
 				49D9A86920F334B30047B667 /* Server.swift in Sources */,
 				49C11B2D20FBDF3E00715403 /* CheckProfileViewController.swift in Sources */,
 				49F043EF20FA5C9F00C48E10 /* Account.swift in Sources */,
 				498C20F520E76798001F59FB /* AppDelegate.swift in Sources */,
 				498C212320E788AF001F59FB /* AccountsViewController.swift in Sources */,
 				49F043FB20FA7A1700C48E10 /* AccountsPresenter.swift in Sources */,
+				49C5F8BE20FDB738001386AC /* LoginRouter.swift in Sources */,
 				493F6DD420EB3C13002B8120 /* DropDownButton.swift in Sources */,
 				49A8529320FBA2AC0056684A /* LoginTableViewCell.swift in Sources */,
 				498C212720E78D0C001F59FB /* OperationTableViewCell.swift in Sources */,
@@ -456,6 +467,7 @@
 				49F043FD20FA7B7F00C48E10 /* NewOperationPresenter.swift in Sources */,
 				49F0440120FA7BC500C48E10 /* LoginViewController.swift in Sources */,
 				49F043F120FA5CAB00C48E10 /* OperationType.swift in Sources */,
+				49C5F8BA20FDA6FA001386AC /* CheckProfileRouter.swift in Sources */,
 				49F043EB20FA5C8700C48E10 /* User.swift in Sources */,
 				49C11B2A20FBD57D00715403 /* UIView.swift in Sources */,
 				49F043ED20FA5C9100C48E10 /* Operation.swift in Sources */,

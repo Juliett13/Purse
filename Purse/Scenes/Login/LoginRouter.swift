@@ -1,9 +1,13 @@
-//
-//  LoginRouter.swift
-//  Purse
-//
-//  Created by Kuroyan Juliett on 17.07.2018.
-//  Copyright © 2018 C3G9. All rights reserved.
-//
+import UIKit
 
-import Foundation
+protocol LoginRouterProtocol {
+}
+
+class LoginRouter: LoginRouterProtocol {
+    weak var view: LoginViewController?
+    
+    init(view: LoginViewController?) {
+        self.view = view
+    }
+    
+}
