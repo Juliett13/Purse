@@ -16,7 +16,9 @@ class LoginRouter: LoginRouterProtocol {
             return
         }
         
-        let targetVC = view.storyboard?.instantiateViewController(withIdentifier: AccountsViewController.reuseId) as! AccountsViewController
+        guard let targetVC = view.storyboard?.instantiateViewController(withIdentifier: AccountsViewController.reuseId) as? AccountsViewController else {
+            return
+        }
         let router = AccountsRouter(view: targetVC)
         let presenter = AccountsPresenter(view: targetVC, router: router)
         targetVC.presenter = presenter

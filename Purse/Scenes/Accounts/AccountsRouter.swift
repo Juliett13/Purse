@@ -16,7 +16,9 @@ class AccountsRouter: AccountsRouterProtocol {
             return
         }
         
-        let targetVC = view.storyboard?.instantiateViewController(withIdentifier: NewOperationViewController.reuseId) as! NewOperationViewController
+        guard let targetVC = view.storyboard?.instantiateViewController(withIdentifier: NewOperationViewController.reuseId) as? NewOperationViewController else {
+            return
+        }
         let presenter = NewOperationPresenter(view: targetVC, operationType: operationType.rawValue)
         targetVC.presenter = presenter
         view.navigationController?.pushViewController(targetVC, animated: true)

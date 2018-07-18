@@ -25,7 +25,10 @@ class CheckProfileRouter: CheckProfileRouterProtocol {
             return
         }
         
-        let targetVC = view.storyboard?.instantiateViewController(withIdentifier: LoginViewController.reuseId) as! LoginViewController
+        guard let targetVC = view.storyboard?.instantiateViewController(withIdentifier: LoginViewController.reuseId) as? LoginViewController else {
+            return
+        }
+        
         let router = LoginRouter(view: targetVC)
         let presenter = LoginPresenter(view: targetVC, router: router,  actionType: actionType)
         targetVC.presenter = presenter

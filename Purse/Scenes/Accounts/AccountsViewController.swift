@@ -66,7 +66,9 @@ extension AccountsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: OperationTableViewCell.reuseId, for: indexPath) as! OperationTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: OperationTableViewCell.reuseId, for: indexPath) as? OperationTableViewCell else {
+            return UITableViewCell()
+        }
         presenter.configure(cell: cell, for: indexPath.row)
         return cell
     }

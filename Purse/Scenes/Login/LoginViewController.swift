@@ -47,13 +47,17 @@ extension LoginViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: LoginTableViewCell.reuseId, for: indexPath) as! LoginTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: LoginTableViewCell.reuseId, for: indexPath) as? LoginTableViewCell else {
+            return UITableViewCell()
+        }
         presenter.configure(cell: cell, forRow: indexPath.row)
         return cell
     }
     
     func getCell(by row: Int) -> LoginTableViewCellInfoDisplayProtocol {
-        let cell = self.tableView.cellForRow(at: IndexPath(row: row, section: 0)) as! LoginTableViewCell
+        guard let cell = self.tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? LoginTableViewCell else {
+            return LoginTableViewCell()
+        }
         return cell
     }
 }
