@@ -14,7 +14,9 @@ class dropDownButton: UIButton, dropDownProtocol {
         self.layer.cornerRadius = 15
         self.layer.borderColor = UIColor(red: 121.0 / 255.0, green: 190.0 / 255.0, blue: 112.0 / 255.0, alpha: 1).cgColor
         
-        dropView = dropDownView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0))
+        // REVIEW: There is not need to write init.
+        // dropDownView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0))
+        dropView = dropDownView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         dropView.delegate = self
         dropView.translatesAutoresizingMaskIntoConstraints = false
     }

@@ -17,6 +17,7 @@ class OperationTableViewCell: UITableViewCell, OperationTableViewCellInfoDisplay
         infoLabel.text = info
     }
     
+    // REVIEW: Cell mustn't prepare final text from data, it's presenter's job.
     func display(sum: Int) {
         sumLabel.text = "\(sum)"
     }

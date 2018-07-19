@@ -36,6 +36,8 @@
 		49F043FD20FA7B7F00C48E10 /* NewOperationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F043FC20FA7B7E00C48E10 /* NewOperationPresenter.swift */; };
 		49F043FF20FA7BB100C48E10 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F043FE20FA7BB100C48E10 /* LoginPresenter.swift */; };
 		49F0440120FA7BC500C48E10 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F0440020FA7BC500C48E10 /* LoginViewController.swift */; };
+		5D00BEBF21008B6700234199 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D00BEBE21008B6700234199 /* Reusable.swift */; };
+		5D00BEC12100922F00234199 /* LoginProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D00BEC02100922F00234199 /* LoginProtocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +94,8 @@
 		49F043FC20FA7B7E00C48E10 /* NewOperationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOperationPresenter.swift; sourceTree = "<group>"; };
 		49F043FE20FA7BB100C48E10 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		49F0440020FA7BC500C48E10 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		5D00BEBE21008B6700234199 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		5D00BEC02100922F00234199 /* LoginProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProtocols.swift; sourceTree = "<group>"; };
 		68AEFEEABF80790164CDE05F /* Pods-Purse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Purse.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Purse/Pods-Purse.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -155,6 +159,7 @@
 		498C20F320E76798001F59FB /* Purse */ = {
 			isa = PBXGroup;
 			children = (
+				5D00BEBC21008B4900234199 /* Utils */,
 				49F043E920FA5C7900C48E10 /* Models */,
 				49F043F220FA786E00C48E10 /* Scenes */,
 				49D9A86720F334A70047B667 /* Server */,
@@ -251,12 +256,29 @@
 		49F043F520FA787A00C48E10 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				5D00BEC02100922F00234199 /* LoginProtocols.swift */,
 				49F043FE20FA7BB100C48E10 /* LoginPresenter.swift */,
 				49F0440020FA7BC500C48E10 /* LoginViewController.swift */,
 				49A8529220FBA2AC0056684A /* LoginTableViewCell.swift */,
 				49C5F8BD20FDB738001386AC /* LoginRouter.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		5D00BEBC21008B4900234199 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5D00BEBD21008B5400234199 /* Protocols */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		5D00BEBD21008B5400234199 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				5D00BEBE21008B6700234199 /* Reusable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		6CBC6D34450E6D6DD1A9EA34 /* Frameworks */ = {
@@ -459,7 +481,9 @@
 				49F043FB20FA7A1700C48E10 /* AccountsPresenter.swift in Sources */,
 				49C5F8BE20FDB738001386AC /* LoginRouter.swift in Sources */,
 				493F6DD420EB3C13002B8120 /* DropDownButton.swift in Sources */,
+				5D00BEC12100922F00234199 /* LoginProtocols.swift in Sources */,
 				49A8529320FBA2AC0056684A /* LoginTableViewCell.swift in Sources */,
+				5D00BEBF21008B6700234199 /* Reusable.swift in Sources */,
 				498C212720E78D0C001F59FB /* OperationTableViewCell.swift in Sources */,
 				496785CB20F2CEA00071CB8B /* NewOperationViewController.swift in Sources */,
 				4964BAD220F249CE006A236F /* OperationTypesView.swift in Sources */,
