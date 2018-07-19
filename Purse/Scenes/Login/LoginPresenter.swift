@@ -24,7 +24,7 @@ class LoginPresenter: LoginPresenterProtocol {
         self.actionType = actionType
     }
     
-    // REVIEW: View should ask presenter for
+    // REVIEW: Not required, but nice to user.
     // Mask password input.
     // Use placeholders in textFields.
     func configure(cell: LoginTableViewCellInfoDisplayProtocol, forRow row: Int) {
