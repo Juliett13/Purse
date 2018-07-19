@@ -1,10 +1,5 @@
 import UIKit
 
-protocol LoginViewProtocol: class {
-    func setButtonTitle(text: String)
-    func showAlert(with message: String)
-    func getCell(by row: Int) -> LoginTableViewCellInfoDisplayProtocol
-}
 
 class LoginViewController: UIViewController, LoginViewProtocol {
  
@@ -21,7 +16,12 @@ class LoginViewController: UIViewController, LoginViewProtocol {
     override func viewDidLoad() {
         presenter.configureButton()
     }
-    
+}
+
+// MARK: - LoginViewProtocol
+
+extension LoginViewController
+{
     func setButtonTitle(text: String) {
         button.setTitle(text, for: .normal) 
     }
@@ -33,12 +33,16 @@ class LoginViewController: UIViewController, LoginViewProtocol {
     }
 }
 
+// MARK: - UITextFieldDelegate
+
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }
 }
+
+// MARK: - UITableViewDelegate, UITableViewDataSource
 
 extension LoginViewController: UITableViewDelegate, UITableViewDataSource {
     

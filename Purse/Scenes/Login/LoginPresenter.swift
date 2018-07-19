@@ -1,11 +1,8 @@
 import UIKit
 
-protocol LoginPresenterProtocol {
-    var fieldsCount: Int { get }
-    func configure(cell: LoginTableViewCellInfoDisplayProtocol,forRow row: Int)
-    func tryLogin()
-    func configureButton() 
-}
+// REVIEW: There should be no UIKit in presenter. Presenter should be designed to be reusable on several platforms. for example, it should be usable in MacOs version of the app.
+// UIKit must be in View and Router only.
+// Presenter musn't know that you are wotking with UITableViewCell. If a need arise to use UICollectionView, presenter mustn't be affected.
 
 class LoginPresenter: LoginPresenterProtocol {
     enum ActionType {
@@ -16,6 +13,8 @@ class LoginPresenter: LoginPresenterProtocol {
     var actionType: ActionType
     
     unowned let view: LoginViewProtocol
+    
+    // REVIEW: No need to use internal, all properties are internal by default.
     internal let router: LoginRouterProtocol
     let fieldsCount = 2
     
@@ -25,7 +24,10 @@ class LoginPresenter: LoginPresenterProtocol {
         self.actionType = actionType
     }
     
-    func configure(cell: LoginTableViewCellInfoDisplayProtocol,forRow row: Int) {
+    // REVIEW: View should ask presenter for
+    // Mask password input.
+    // Use placeholders in textFields.
+    func configure(cell: LoginTableViewCellInfoDisplayProtocol, forRow row: Int) {
         switch row {
         case 0:
             cell.display(info: "Логин")
@@ -45,6 +47,8 @@ class LoginPresenter: LoginPresenterProtocol {
         view.setButtonTitle(text: name)
     }
     
+    // REVIEW: Input must be stored in presenter, not obtained from cell, because when you reload tableView, all data in cell will be gone. Please, refactor it.
+    // You should update text in presenter in real time as user inputs to preserve it.
     func tryLogin() {
         let loginCell = view.getCell(by: 0)
         let passwordCell = view.getCell(by: 1)
@@ -56,6 +60,8 @@ class LoginPresenter: LoginPresenterProtocol {
             return
         }
         
+        // Alternative:
+        //if log.isEmpty || pass.isEmpty
         if log == "" || pass == "" {
             view.showAlert(with: "Заполните все поля!")
             return

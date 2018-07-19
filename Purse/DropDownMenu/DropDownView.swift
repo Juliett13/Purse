@@ -1,16 +1,21 @@
 import UIKit
 
-protocol dropDownProtocol {
+// REVIEW: Use PascalCase for type names. See swift style guideline:
+// https://github.com/linkedin/swift-style-guide#2-naming
+// Delegate protocols must conform to `class`, othervise their inctances cannot be declared weak.
+protocol dropDownProtocol: class {
     func dropDownPressed(title: String)
 }
 
+// REVIEW: Use PascalCase for type names.
 class dropDownView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     var dropDownOptions = [String]()
     
     var tableView = UITableView()
     
-    var delegate : dropDownProtocol!
+    // REVIEW: Delegate must be weak to avoid retain cycle.
+    weak var delegate : dropDownProtocol?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -52,7 +57,7 @@ class dropDownView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.delegate.dropDownPressed(title: dropDownOptions[indexPath.row])
+        self.delegate?.dropDownPressed(title: dropDownOptions[indexPath.row])
         self.tableView.deselectRow(at: indexPath, animated: true)
     }
 }

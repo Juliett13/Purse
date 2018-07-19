@@ -12,13 +12,14 @@ class AccountsRouter: AccountsRouterProtocol {
     }
     
     func pushNewOperationView(with operationType: Operation.operations) {
-        guard let view = view else {
+        // REVIEW: You can unite several guard cases into one if they share the same `else` action.
+
+        guard
+            let view = view,
+            let targetVC = view.storyboard?.instantiateViewController(withIdentifier: NewOperationViewController.reuseId) as? NewOperationViewController  else {
             return
         }
         
-        guard let targetVC = view.storyboard?.instantiateViewController(withIdentifier: NewOperationViewController.reuseId) as? NewOperationViewController else {
-            return
-        }
         let presenter = NewOperationPresenter(view: targetVC, operationType: operationType.rawValue)
         targetVC.presenter = presenter
         view.navigationController?.pushViewController(targetVC, animated: true)
