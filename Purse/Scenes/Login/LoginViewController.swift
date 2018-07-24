@@ -69,6 +69,9 @@ extension LoginViewController: UITableViewDelegate, UITableViewDataSource {
         }
         let fieldName = presenter.fieldName(for: indexPath.row)
         let isSecure = presenter.fieldIsSecure(for: indexPath.row)
+        /**
+         REVIEW: Practice shows that using tag is not a good approach, especially based on indexPath, but now it is acceptable. 
+         */
         cell.configure(tag: indexPath.row, isSecure: isSecure, placeholder: fieldName)
         return cell
     }

@@ -1,5 +1,7 @@
 import Foundation
 
+// REVIEW: Good job with protocols organization.
+
 // MARK: - View
 
 protocol AccountsViewProtocol: class {

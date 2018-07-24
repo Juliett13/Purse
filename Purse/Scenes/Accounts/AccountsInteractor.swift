@@ -23,12 +23,16 @@ extension AccountsInteractor: AccountsInteractorProtocol  {
 
         let url = "operation" + operationType + account
         
+        // REVIEW: Why are you using NSDictionary and NSArray?
         let onSuccess: (Any) -> () = { any in
             if let array = any as? NSArray {
                 let operations = array.map({ (dict) -> Operation? in
                     if let d = dict as? NSDictionary,
-                        let id = d.value(forKey: "id") as? Int,
-                        let operationTypeId = d.value(forKey: "operationTypeId") as? Int,
+                        // Use subscript d["id"]
+                     
+                        let id = d["id"] as? Int,
+                        let operationTypeId = d["operationTypeId"] as? Int,
+                        // DON'T use value(forKey:), this is very dangerous. This way you are requesting value of variable named "sum", not object in dict with key "sum". Also, check out Codable
                         let sum = d.value(forKey: "sum") as? Int,
                         let firstAccountId = d.value(forKey: "firstAccountId") as? Int,
                         let comment = d.value(forKey: "comment") as? String
