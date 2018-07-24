@@ -74,3 +74,18 @@ extension UITableView
         return self.dequeueReusableCell(withIdentifier: T.reuseIdentifier, for: indexPath) as? T
     }
 }
+
+
+
+// MARK: - UIStoryboard
+
+extension UIStoryboard
+{
+    func instantiateViewController<T: UIViewController>() -> T?  where T: Reusable
+    {
+        return self.instantiateViewController(withIdentifier: T.reuseIdentifier) as? T
+    }
+}
+
+
+

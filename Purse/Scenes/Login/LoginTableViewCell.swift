@@ -2,23 +2,20 @@ import UIKit
 
 protocol LoginTableViewCellInfoDisplayProtocol
 {
-    func display(info: String)
-    func getTextFieldInfo() -> String? 
+    func configure(tag: Int, isSecure: Bool, placeholder: String) 
 }
 
-class LoginTableViewCell: UITableViewCell, LoginTableViewCellInfoDisplayProtocol {
-    
-    static let reuseId = "LoginTableViewCell_reuseId"
-    
-    @IBOutlet private weak var infoLabel: UILabel!
+class LoginTableViewCell: UITableViewCell, Reusable {
     
     @IBOutlet private weak var textField: UITextField!
-    
-    func display(info: String) {
-        infoLabel.text = info
-    }
-    
-    func getTextFieldInfo() -> String? {
-        return textField.text
+}
+
+// MARK: - LoginTableViewCellInfoDisplayProtocol
+
+extension LoginTableViewCell: LoginTableViewCellInfoDisplayProtocol {
+    func configure(tag: Int, isSecure: Bool, placeholder: String) {
+        textField.tag = tag
+        textField.isSecureTextEntry = isSecure
+        textField.placeholder = placeholder
     }
 }

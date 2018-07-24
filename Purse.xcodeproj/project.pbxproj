@@ -8,8 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		490182F734454D49FDF48709 /* Pods_Purse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B3C91489A2F3C6DEED1518 /* Pods_Purse.framework */; };
+		490968232101F8EE00E03BAC /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490968222101F8EE00E03BAC /* LoginInteractor.swift */; };
+		490968252101F8FF00E03BAC /* AccountsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490968242101F8FF00E03BAC /* AccountsInteractor.swift */; };
+		490968272101F90F00E03BAC /* NewOperationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490968262101F90F00E03BAC /* NewOperationInteractor.swift */; };
+		4909682C2101F9F800E03BAC /* Queryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4909682B2101F9F800E03BAC /* Queryable.swift */; };
 		493F6DD420EB3C13002B8120 /* DropDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493F6DD320EB3C13002B8120 /* DropDownButton.swift */; };
 		493F6DD620EB3C3A002B8120 /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493F6DD520EB3C3A002B8120 /* DropDownView.swift */; };
+		495BCCA92100FAD800F53664 /* CheckProfileProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495BCCA82100FAD800F53664 /* CheckProfileProtocols.swift */; };
+		495BCCAB2100FB6700F53664 /* AccountsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495BCCAA2100FB6700F53664 /* AccountsProtocols.swift */; };
+		495BCCAD2100FBCE00F53664 /* NewOperationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495BCCAC2100FBCE00F53664 /* NewOperationProtocols.swift */; };
 		4964BAD220F249CE006A236F /* OperationTypesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4964BAD120F249CE006A236F /* OperationTypesView.swift */; };
 		496785CB20F2CEA00071CB8B /* NewOperationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496785CA20F2CEA00071CB8B /* NewOperationViewController.swift */; };
 		498C20F520E76798001F59FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498C20F420E76798001F59FB /* AppDelegate.swift */; };
@@ -20,18 +27,20 @@
 		498C211520E7679E001F59FB /* PurseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498C211420E7679E001F59FB /* PurseUITests.swift */; };
 		498C212320E788AF001F59FB /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498C212220E788AF001F59FB /* AccountsViewController.swift */; };
 		498C212720E78D0C001F59FB /* OperationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498C212620E78D0C001F59FB /* OperationTableViewCell.swift */; };
+		49998F43210629F400ABE808 /* NewOperationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49998F42210629F400ABE808 /* NewOperationRouter.swift */; };
 		49A8529320FBA2AC0056684A /* LoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A8529220FBA2AC0056684A /* LoginTableViewCell.swift */; };
+		49B808E72106ED270097080A /* LoginConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B808E62106ED270097080A /* LoginConfigurator.swift */; };
+		49B808E92106F3DC0097080A /* AccountsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B808E82106F3DC0097080A /* AccountsConfigurator.swift */; };
+		49B808EB2106F5920097080A /* NewOperationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B808EA2106F5920097080A /* NewOperationConfigurator.swift */; };
 		49C11B2A20FBD57D00715403 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C11B2920FBD57D00715403 /* UIView.swift */; };
 		49C11B2D20FBDF3E00715403 /* CheckProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C11B2C20FBDF3E00715403 /* CheckProfileViewController.swift */; };
 		49C11B2F20FBE00600715403 /* CheckProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C11B2E20FBE00600715403 /* CheckProfilePresenter.swift */; };
 		49C5F8BA20FDA6FA001386AC /* CheckProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C5F8B920FDA6FA001386AC /* CheckProfileRouter.swift */; };
 		49C5F8BE20FDB738001386AC /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C5F8BD20FDB738001386AC /* LoginRouter.swift */; };
 		49C5F8C020FDB77A001386AC /* AccountsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C5F8BF20FDB77A001386AC /* AccountsRouter.swift */; };
-		49D9A86920F334B30047B667 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D9A86820F334B30047B667 /* Server.swift */; };
 		49F043EB20FA5C8700C48E10 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F043EA20FA5C8700C48E10 /* User.swift */; };
 		49F043ED20FA5C9100C48E10 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F043EC20FA5C9100C48E10 /* Operation.swift */; };
 		49F043EF20FA5C9F00C48E10 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F043EE20FA5C9F00C48E10 /* Account.swift */; };
-		49F043F120FA5CAB00C48E10 /* OperationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F043F020FA5CAB00C48E10 /* OperationType.swift */; };
 		49F043FB20FA7A1700C48E10 /* AccountsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F043FA20FA7A1700C48E10 /* AccountsPresenter.swift */; };
 		49F043FD20FA7B7F00C48E10 /* NewOperationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F043FC20FA7B7E00C48E10 /* NewOperationPresenter.swift */; };
 		49F043FF20FA7BB100C48E10 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F043FE20FA7BB100C48E10 /* LoginPresenter.swift */; };
@@ -60,8 +69,15 @@
 /* Begin PBXFileReference section */
 		00B3C91489A2F3C6DEED1518 /* Pods_Purse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Purse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		353EE7AB187D41026C517953 /* Pods-Purse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Purse.release.xcconfig"; path = "Pods/Target Support Files/Pods-Purse/Pods-Purse.release.xcconfig"; sourceTree = "<group>"; };
+		490968222101F8EE00E03BAC /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		490968242101F8FF00E03BAC /* AccountsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsInteractor.swift; sourceTree = "<group>"; };
+		490968262101F90F00E03BAC /* NewOperationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOperationInteractor.swift; sourceTree = "<group>"; };
+		4909682B2101F9F800E03BAC /* Queryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queryable.swift; sourceTree = "<group>"; };
 		493F6DD320EB3C13002B8120 /* DropDownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownButton.swift; sourceTree = "<group>"; };
 		493F6DD520EB3C3A002B8120 /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
+		495BCCA82100FAD800F53664 /* CheckProfileProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckProfileProtocols.swift; sourceTree = "<group>"; };
+		495BCCAA2100FB6700F53664 /* AccountsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsProtocols.swift; sourceTree = "<group>"; };
+		495BCCAC2100FBCE00F53664 /* NewOperationProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOperationProtocols.swift; sourceTree = "<group>"; };
 		4964BAD120F249CE006A236F /* OperationTypesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationTypesView.swift; sourceTree = "<group>"; };
 		496785CA20F2CEA00071CB8B /* NewOperationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOperationViewController.swift; sourceTree = "<group>"; };
 		498C20F120E76798001F59FB /* Purse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Purse.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,18 +94,20 @@
 		498C211620E7679E001F59FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		498C212220E788AF001F59FB /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
 		498C212620E78D0C001F59FB /* OperationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationTableViewCell.swift; sourceTree = "<group>"; };
+		49998F42210629F400ABE808 /* NewOperationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOperationRouter.swift; sourceTree = "<group>"; };
 		49A8529220FBA2AC0056684A /* LoginTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTableViewCell.swift; sourceTree = "<group>"; };
+		49B808E62106ED270097080A /* LoginConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginConfigurator.swift; sourceTree = "<group>"; };
+		49B808E82106F3DC0097080A /* AccountsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsConfigurator.swift; sourceTree = "<group>"; };
+		49B808EA2106F5920097080A /* NewOperationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOperationConfigurator.swift; sourceTree = "<group>"; };
 		49C11B2920FBD57D00715403 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		49C11B2C20FBDF3E00715403 /* CheckProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckProfileViewController.swift; sourceTree = "<group>"; };
 		49C11B2E20FBE00600715403 /* CheckProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckProfilePresenter.swift; sourceTree = "<group>"; };
 		49C5F8B920FDA6FA001386AC /* CheckProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckProfileRouter.swift; sourceTree = "<group>"; };
 		49C5F8BD20FDB738001386AC /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		49C5F8BF20FDB77A001386AC /* AccountsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsRouter.swift; sourceTree = "<group>"; };
-		49D9A86820F334B30047B667 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		49F043EA20FA5C8700C48E10 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		49F043EC20FA5C9100C48E10 /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
 		49F043EE20FA5C9F00C48E10 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
-		49F043F020FA5CAB00C48E10 /* OperationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationType.swift; sourceTree = "<group>"; };
 		49F043FA20FA7A1700C48E10 /* AccountsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsPresenter.swift; sourceTree = "<group>"; };
 		49F043FC20FA7B7E00C48E10 /* NewOperationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOperationPresenter.swift; sourceTree = "<group>"; };
 		49F043FE20FA7BB100C48E10 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
@@ -125,6 +143,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4909682A2101F9C300E03BAC /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				4909682B2101F9F800E03BAC /* Queryable.swift */,
+			);
+			path = Server;
+			sourceTree = "<group>";
+		};
 		493F6DD220EB3BD1002B8120 /* DropDownMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,7 +188,6 @@
 				5D00BEBC21008B4900234199 /* Utils */,
 				49F043E920FA5C7900C48E10 /* Models */,
 				49F043F220FA786E00C48E10 /* Scenes */,
-				49D9A86720F334A70047B667 /* Server */,
 				493F6DD220EB3BD1002B8120 /* DropDownMenu */,
 				498C20F420E76798001F59FB /* AppDelegate.swift */,
 				498C20F820E76798001F59FB /* Main.storyboard */,
@@ -195,19 +220,12 @@
 		49C11B2B20FBDED500715403 /* CheckProfileExistence */ = {
 			isa = PBXGroup;
 			children = (
+				495BCCA82100FAD800F53664 /* CheckProfileProtocols.swift */,
 				49C11B2C20FBDF3E00715403 /* CheckProfileViewController.swift */,
 				49C11B2E20FBE00600715403 /* CheckProfilePresenter.swift */,
 				49C5F8B920FDA6FA001386AC /* CheckProfileRouter.swift */,
 			);
 			path = CheckProfileExistence;
-			sourceTree = "<group>";
-		};
-		49D9A86720F334A70047B667 /* Server */ = {
-			isa = PBXGroup;
-			children = (
-				49D9A86820F334B30047B667 /* Server.swift */,
-			);
-			path = Server;
 			sourceTree = "<group>";
 		};
 		49F043E920FA5C7900C48E10 /* Models */ = {
@@ -216,7 +234,6 @@
 				49F043EA20FA5C8700C48E10 /* User.swift */,
 				49F043EC20FA5C9100C48E10 /* Operation.swift */,
 				49F043EE20FA5C9F00C48E10 /* Account.swift */,
-				49F043F020FA5CAB00C48E10 /* OperationType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -235,8 +252,12 @@
 		49F043F320FA787400C48E10 /* NewOperation */ = {
 			isa = PBXGroup;
 			children = (
+				495BCCAC2100FBCE00F53664 /* NewOperationProtocols.swift */,
 				496785CA20F2CEA00071CB8B /* NewOperationViewController.swift */,
 				49F043FC20FA7B7E00C48E10 /* NewOperationPresenter.swift */,
+				490968262101F90F00E03BAC /* NewOperationInteractor.swift */,
+				49998F42210629F400ABE808 /* NewOperationRouter.swift */,
+				49B808EA2106F5920097080A /* NewOperationConfigurator.swift */,
 			);
 			path = NewOperation;
 			sourceTree = "<group>";
@@ -244,11 +265,14 @@
 		49F043F420FA787700C48E10 /* Accounts */ = {
 			isa = PBXGroup;
 			children = (
+				495BCCAA2100FB6700F53664 /* AccountsProtocols.swift */,
 				498C212220E788AF001F59FB /* AccountsViewController.swift */,
 				49F043FA20FA7A1700C48E10 /* AccountsPresenter.swift */,
 				498C212620E78D0C001F59FB /* OperationTableViewCell.swift */,
 				4964BAD120F249CE006A236F /* OperationTypesView.swift */,
 				49C5F8BF20FDB77A001386AC /* AccountsRouter.swift */,
+				490968242101F8FF00E03BAC /* AccountsInteractor.swift */,
+				49B808E82106F3DC0097080A /* AccountsConfigurator.swift */,
 			);
 			path = Accounts;
 			sourceTree = "<group>";
@@ -261,6 +285,8 @@
 				49F0440020FA7BC500C48E10 /* LoginViewController.swift */,
 				49A8529220FBA2AC0056684A /* LoginTableViewCell.swift */,
 				49C5F8BD20FDB738001386AC /* LoginRouter.swift */,
+				490968222101F8EE00E03BAC /* LoginInteractor.swift */,
+				49B808E62106ED270097080A /* LoginConfigurator.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -268,6 +294,7 @@
 		5D00BEBC21008B4900234199 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				4909682A2101F9C300E03BAC /* Server */,
 				5D00BEBD21008B5400234199 /* Protocols */,
 			);
 			path = Utils;
@@ -470,30 +497,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				490968252101F8FF00E03BAC /* AccountsInteractor.swift in Sources */,
 				49F043FF20FA7BB100C48E10 /* LoginPresenter.swift in Sources */,
 				49C11B2F20FBE00600715403 /* CheckProfilePresenter.swift in Sources */,
 				49C5F8C020FDB77A001386AC /* AccountsRouter.swift in Sources */,
-				49D9A86920F334B30047B667 /* Server.swift in Sources */,
+				490968232101F8EE00E03BAC /* LoginInteractor.swift in Sources */,
+				4909682C2101F9F800E03BAC /* Queryable.swift in Sources */,
 				49C11B2D20FBDF3E00715403 /* CheckProfileViewController.swift in Sources */,
 				49F043EF20FA5C9F00C48E10 /* Account.swift in Sources */,
 				498C20F520E76798001F59FB /* AppDelegate.swift in Sources */,
 				498C212320E788AF001F59FB /* AccountsViewController.swift in Sources */,
+				490968272101F90F00E03BAC /* NewOperationInteractor.swift in Sources */,
 				49F043FB20FA7A1700C48E10 /* AccountsPresenter.swift in Sources */,
 				49C5F8BE20FDB738001386AC /* LoginRouter.swift in Sources */,
+				495BCCAB2100FB6700F53664 /* AccountsProtocols.swift in Sources */,
+				49998F43210629F400ABE808 /* NewOperationRouter.swift in Sources */,
 				493F6DD420EB3C13002B8120 /* DropDownButton.swift in Sources */,
 				5D00BEC12100922F00234199 /* LoginProtocols.swift in Sources */,
 				49A8529320FBA2AC0056684A /* LoginTableViewCell.swift in Sources */,
+				495BCCAD2100FBCE00F53664 /* NewOperationProtocols.swift in Sources */,
 				5D00BEBF21008B6700234199 /* Reusable.swift in Sources */,
 				498C212720E78D0C001F59FB /* OperationTableViewCell.swift in Sources */,
 				496785CB20F2CEA00071CB8B /* NewOperationViewController.swift in Sources */,
 				4964BAD220F249CE006A236F /* OperationTypesView.swift in Sources */,
 				493F6DD620EB3C3A002B8120 /* DropDownView.swift in Sources */,
 				49F043FD20FA7B7F00C48E10 /* NewOperationPresenter.swift in Sources */,
+				49B808EB2106F5920097080A /* NewOperationConfigurator.swift in Sources */,
 				49F0440120FA7BC500C48E10 /* LoginViewController.swift in Sources */,
-				49F043F120FA5CAB00C48E10 /* OperationType.swift in Sources */,
 				49C5F8BA20FDA6FA001386AC /* CheckProfileRouter.swift in Sources */,
+				49B808E92106F3DC0097080A /* AccountsConfigurator.swift in Sources */,
 				49F043EB20FA5C8700C48E10 /* User.swift in Sources */,
 				49C11B2A20FBD57D00715403 /* UIView.swift in Sources */,
+				495BCCA92100FAD800F53664 /* CheckProfileProtocols.swift in Sources */,
+				49B808E72106ED270097080A /* LoginConfigurator.swift in Sources */,
 				49F043ED20FA5C9100C48E10 /* Operation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

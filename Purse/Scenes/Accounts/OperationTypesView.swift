@@ -120,7 +120,7 @@ class OperationTypesView: UIView, UIGestureRecognizerDelegate {
 
         let timeInterval = 0.3
         
-        UIView.animate(withDuration: timeInterval, animations:  {
+        UIView.animate(withDuration: timeInterval, animations:  { 
             self.alpha = 0
             self.containerView.transform = CGAffineTransform(translationX: dx, y: dy).scaledBy(x: 0.1, y: 0.3)
         })

@@ -1,18 +1,10 @@
 import UIKit
 
-protocol NewOperationViewProtocol: class {
-    func setConfiguration(firstAccountLabelText: String, secondAccountLabelText: String, secondAccountIsHidden: Bool) 
-}
-
-// REVIEW: Use extensions to separate class functionality. It greatly improves code readability and navigation in the class using functions list.
-class NewOperationViewController: UIViewController, NewOperationViewProtocol {
+class NewOperationViewController: UIViewController, Reusable {
    
-    // REVIEW: better place presenter, delegate instances at the top of parameters list.
-    // This way you can clearly see all dependencies.
     var presenter: NewOperationPresenterProtocol!
-    
-    static let reuseId = "NewOperationViewController_reuseId"
-  
+    var configurator: NewOperationConfiguratorProtocol!
+
     @IBOutlet private weak var firstAccountPickerView: UIPickerView!
     @IBOutlet private weak var sumTextField: UITextField!
     @IBOutlet private weak var commentTextField: UITextField!
@@ -31,7 +23,25 @@ class NewOperationViewController: UIViewController, NewOperationViewProtocol {
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
+        configurator.configure(view: self)
+
+        firstAccountPickerView.dataSource = self
+        secondAccountPickerView.dataSource = self
+        
+        firstAccountPickerView.delegate = self
+        secondAccountPickerView.delegate = self
+        
+        firstAccountPickerView.tag = presenter.firstAccountTag
+        secondAccountPickerView.tag = presenter.secondAccountTag
+        
+        sumTextField.tag = presenter.sumTag
+        commentTextField.tag = presenter.commentTag
+        
+        sumTextField.delegate = self
+        commentTextField.delegate = self
+        
         operationTypeSegmentControl.selectedSegmentIndex = presenter.operationType
+        presenter.prepareView()
     }
     
     override func viewDidLayoutSubviews() {
@@ -41,17 +51,21 @@ class NewOperationViewController: UIViewController, NewOperationViewProtocol {
 
 // MARK: - IBActions
 
-extension NewOperationViewController
-{
+extension NewOperationViewController {
     @IBAction func operationTypeChanged(_ sender: Any) {
         presenter.operationTypeChanged(id: operationTypeSegmentControl.selectedSegmentIndex)
     }
+    
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        presenter.save()
+    }
+    
+    
 }
 
 // MARK: - NewOperationViewProtocol
 
-extension NewOperationViewController
-{
+extension NewOperationViewController: NewOperationViewProtocol {
     func setConfiguration(firstAccountLabelText: String, secondAccountLabelText: String, secondAccountIsHidden: Bool) {
         let maxDistance = 3 * minDistance + secondAccountPickerView.layer.frame.height + secondAccountLabel.layer.frame.height
         let verticalSpacing = secondAccountIsHidden ? minDistance : maxDistance
@@ -61,4 +75,53 @@ extension NewOperationViewController
         secondAccountPickerView.isHidden = secondAccountIsHidden
         constraint.constant = verticalSpacing
     }
+    
+    func showAlert(with message: String, handler: (() -> ()?)?) {
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {action in
+            handler?()
+        }))
+        self.present(alert, animated: true)
+    }
 }
+
+// MARK: - UIPickerViewDataSource, UIPickerViewDelegate
+
+extension NewOperationViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return presenter.accountsCount
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return presenter.accountName(for: row)
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        presenter.didSelectAccount(tag: pickerView.tag, row: row)
+    }
+}
+
+// MARK: - UITextFieldDelegate
+
+extension NewOperationViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+    {
+        return presenter.shouldChangeCharacters(in: range, replacementString: string, tag: textField.tag)
+    }
+}
+
+
+
+
+
+
+

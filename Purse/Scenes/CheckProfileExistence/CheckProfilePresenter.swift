@@ -1,18 +1,17 @@
-protocol CheckProfilePresenterProtocol {
-    func pushLoginVC()
-    func pushCreateProfileVC()
-}
-
-class CheckProfilePresenter: CheckProfilePresenterProtocol {
+class CheckProfilePresenter {
     
     unowned let view: CheckProfileViewProtocol
-    internal let router: CheckProfileRouterProtocol
+    let router: CheckProfileRouterProtocol
 
     init(view: CheckProfileViewProtocol, router: CheckProfileRouterProtocol) {
         self.view = view
         self.router = router
     }
-    
+}
+
+// MARK: - CheckProfilePresenterProtocol
+
+extension CheckProfilePresenter: CheckProfilePresenterProtocol {
     func pushLoginVC() {
         router.presentLoginView()
     }

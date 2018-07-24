@@ -1,24 +1,20 @@
 import UIKit
 
-protocol OperationTableViewCellInfoDisplayProtocol
-{
-    func display(info: String)
-    func display(sum: Int)
+protocol OperationTableViewCellInfoDisplayProtocol {
+    func configure(info: String, sum: String) 
 }
 
-class OperationTableViewCell: UITableViewCell, OperationTableViewCellInfoDisplayProtocol {
-  
-    static let reuseId = "OperationTableViewCell_reuseId"
-    
+class OperationTableViewCell: UITableViewCell, Reusable {
+
     @IBOutlet private weak var infoLabel: UILabel!
     @IBOutlet private weak var sumLabel: UILabel!
-    
-    func display(info: String) {
+}
+
+// MARK: - OperationTableViewCellInfoDisplayProtocol
+
+extension OperationTableViewCell: OperationTableViewCellInfoDisplayProtocol {
+    func configure(info: String, sum: String) {
         infoLabel.text = info
-    }
-    
-    // REVIEW: Cell mustn't prepare final text from data, it's presenter's job.
-    func display(sum: Int) {
-        sumLabel.text = "\(sum)"
+        sumLabel.text = sum
     }
 }

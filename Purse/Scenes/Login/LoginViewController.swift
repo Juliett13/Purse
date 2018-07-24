@@ -1,34 +1,41 @@
 import UIKit
 
-
-class LoginViewController: UIViewController, LoginViewProtocol {
+class LoginViewController: UIViewController, Reusable {
  
-    static let reuseId = "LoginViewController_reuseId"
     var presenter: LoginPresenterProtocol!
+    var configurator: LoginConfiguratorProtocol!
 
     @IBOutlet private weak var button: UIButton!
     @IBOutlet private weak var tableView: UITableView!
    
+    // MARK: - Lifecycle
+
+    override func viewDidLoad() {
+        configurator.configure(view: self)
+        presenter.configureButton()
+    }
+}
+
+// MARK: - IBActions
+
+extension LoginViewController {
     @IBAction func loginButtonPressed(_ sender: Any) {
         presenter.tryLogin()
-    }
-    
-    override func viewDidLoad() {
-        presenter.configureButton()
     }
 }
 
 // MARK: - LoginViewProtocol
 
-extension LoginViewController
-{
+extension LoginViewController: LoginViewProtocol {
     func setButtonTitle(text: String) {
         button.setTitle(text, for: .normal) 
     }
     
-    func showAlert(with message: String) {
+    func showAlert(with message: String, handler: (() -> ()?)?) {
         let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {action in
+            handler?()
+        }))
         self.present(alert, animated: true)
     }
 }
@@ -40,7 +47,12 @@ extension LoginViewController: UITextFieldDelegate {
         self.view.endEditing(true)
         return false
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return presenter.shouldChangeCharacters(in: range, replacementString: string, for: textField.tag)
+    }
 }
+
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
 
@@ -51,17 +63,13 @@ extension LoginViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: LoginTableViewCell.reuseId, for: indexPath) as? LoginTableViewCell else {
+        guard let cell: LoginTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+            else {
             return UITableViewCell()
         }
-        presenter.configure(cell: cell, forRow: indexPath.row)
-        return cell
-    }
-    
-    func getCell(by row: Int) -> LoginTableViewCellInfoDisplayProtocol {
-        guard let cell = self.tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? LoginTableViewCell else {
-            return LoginTableViewCell()
-        }
+        let fieldName = presenter.fieldName(for: indexPath.row)
+        let isSecure = presenter.fieldIsSecure(for: indexPath.row)
+        cell.configure(tag: indexPath.row, isSecure: isSecure, placeholder: fieldName)
         return cell
     }
 }

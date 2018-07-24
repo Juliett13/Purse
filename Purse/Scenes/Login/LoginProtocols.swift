@@ -1,27 +1,32 @@
-
 import Foundation
-
-// REVIEW: Better place all module's protols in one file or in separate files if protocols are big enough. Just suggestion, not a requirement.
 
 // MARK: - View
 
 protocol LoginViewProtocol: class {
     func setButtonTitle(text: String)
-    func showAlert(with message: String)
-    func getCell(by row: Int) -> LoginTableViewCellInfoDisplayProtocol
+    func showAlert(with message: String, handler: (() -> ()?)?) 
 }
 
 // MARK: - Presenter
 
-protocol LoginPresenterProtocol {
+protocol LoginPresenterProtocol: class {
     var fieldsCount: Int { get }
-    func configure(cell: LoginTableViewCellInfoDisplayProtocol, forRow row: Int)
+    func fieldName(for row: Int) -> String
     func tryLogin()
     func configureButton()
+    func shouldChangeCharacters(in range: NSRange, replacementString string: String, for row: Int) -> Bool 
+    func fieldIsSecure(for row: Int) -> Bool 
 }
 
 // MARK: - Router
 
 protocol LoginRouterProtocol {
     func presentAccountsView()
+}
+
+// MARK: - Interactor
+
+protocol LoginInteractorProtocol: class {
+    func createUser(credentials: [String: Any], onSuccess: @escaping (NSDictionary) -> (), onFailure: @escaping () -> ())
+    func loginUser(credentials: [String: Any], onSuccess: @escaping (NSDictionary) -> (), onFailure: @escaping () -> ())
 }

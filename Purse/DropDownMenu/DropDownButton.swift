@@ -1,10 +1,15 @@
 import UIKit
 
-class dropDownButton: UIButton, dropDownProtocol {
+protocol DropDownButtonProtocol: class {
+    func editingDidEnd(with rowValue: Int)
+}
+
+class DropDownButton: UIButton, DropDownProtocol {
     
-    var dropView = dropDownView()
+    var dropView = DropDownView()
     var height = NSLayoutConstraint()
     var isOpen = false
+    weak var delegate : DropDownButtonProtocol?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -14,9 +19,7 @@ class dropDownButton: UIButton, dropDownProtocol {
         self.layer.cornerRadius = 15
         self.layer.borderColor = UIColor(red: 121.0 / 255.0, green: 190.0 / 255.0, blue: 112.0 / 255.0, alpha: 1).cgColor
         
-        // REVIEW: There is not need to write init.
-        // dropDownView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0))
-        dropView = dropDownView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        dropView = DropDownView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         dropView.delegate = self
         dropView.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -32,12 +35,16 @@ class dropDownButton: UIButton, dropDownProtocol {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if dropView.dropDownOptions.isEmpty { //
+            return
+        }
+        
         if !isOpen {
             
             isOpen = true
             
             NSLayoutConstraint.deactivate([self.height])
-            
+                        
             if self.dropView.tableView.contentSize.height > 150 {
                 self.height.constant = 150
             } else {
@@ -55,9 +62,10 @@ class dropDownButton: UIButton, dropDownProtocol {
         }
     }
     
-    func dropDownPressed(title: String) {
-        //        self.setTitle(string, for: .normal)
-        //        self.titleLabel?.text = title
+    func dropDownPressed(rowValue: Int, title: String) {
+        //        self.setTitle(string, for: .normal) //???????
+
+        delegate?.editingDidEnd(with: rowValue)
         self.dismissDropDown()
     }
 
@@ -72,11 +80,12 @@ class dropDownButton: UIButton, dropDownProtocol {
         }, completion: nil)
     }
     
+    func setOptions(_ options: [String]) {
+        dropView.dropDownOptions = options
+        dropView.tableView.reloadData() //
+    }
+    
     required init?(coder aDecoder: NSCoder) {
        super.init(coder: aDecoder)
     }
 }
-
-
-
-

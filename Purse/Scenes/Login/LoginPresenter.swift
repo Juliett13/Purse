@@ -1,39 +1,57 @@
-import UIKit
+import Foundation
 
-// REVIEW: There should be no UIKit in presenter. Presenter should be designed to be reusable on several platforms. for example, it should be usable in MacOs version of the app.
-// UIKit must be in View and Router only.
-// Presenter musn't know that you are wotking with UITableViewCell. If a need arise to use UICollectionView, presenter mustn't be affected.
+class LoginPresenter {
+    unowned let view: LoginViewProtocol
+    var interactor: LoginInteractorProtocol!
+    let router: LoginRouterProtocol
 
-class LoginPresenter: LoginPresenterProtocol {
+    private let loginFieldsCount = 2
+
+    var actionType: ActionType
+    var login = ""
+    var password = ""
+
+    enum FieldType: Int {
+        case login = 0
+        case password = 1
+    }
+
     enum ActionType {
         case createAccount
         case login
     }
-    
-    var actionType: ActionType
-    
-    unowned let view: LoginViewProtocol
-    
-    // REVIEW: No need to use internal, all properties are internal by default.
-    internal let router: LoginRouterProtocol
-    let fieldsCount = 2
-    
+
+
     init(view: LoginViewController, router: LoginRouterProtocol, actionType: ActionType) {
         self.view = view
         self.router = router
         self.actionType = actionType
     }
+}
+
+// MARK: - LoginPresenterProtocol
+
+extension LoginPresenter: LoginPresenterProtocol {
     
-    // REVIEW: Not required, but nice to user.
-    // Mask password input.
-    // Use placeholders in textFields.
-    func configure(cell: LoginTableViewCellInfoDisplayProtocol, forRow row: Int) {
-        switch row {
-        case 0:
-            cell.display(info: "Логин")
-        default:
-            cell.display(info: "Пароль")
+    var fieldsCount: Int {
+        get {
+            return loginFieldsCount
         }
+    }
+    
+    func fieldName(for row: Int) -> String {
+        switch row {
+        case FieldType.login.rawValue:
+            return("Логин")
+        case FieldType.password.rawValue:
+            return("Пароль")
+        default:
+            return ""
+        }
+    }
+
+    func fieldIsSecure(for row: Int) -> Bool {
+        return row == FieldType.password.rawValue
     }
     
     func configureButton() {
@@ -47,33 +65,64 @@ class LoginPresenter: LoginPresenterProtocol {
         view.setButtonTitle(text: name)
     }
     
-    // REVIEW: Input must be stored in presenter, not obtained from cell, because when you reload tableView, all data in cell will be gone. Please, refactor it.
-    // You should update text in presenter in real time as user inputs to preserve it.
+    func shouldChangeCharacters(in range: NSRange, replacementString string: String, for row: Int) -> Bool {
+        switch row {
+        case FieldType.login.rawValue:
+            guard let textRange = Range(range, in: login) else
+            {
+                return false
+            }
+            login = login.replacingCharacters(in: textRange, with: string)
+            
+        case FieldType.password.rawValue:
+            guard let textRange = Range(range, in: password) else
+            {
+                return false
+            }
+            password = password.replacingCharacters(in: textRange, with: string)
+            
+        default:
+            return false
+        }
+        
+        return true
+    }
+    
     func tryLogin() {
-        let loginCell = view.getCell(by: 0)
-        let passwordCell = view.getCell(by: 1)
 
-        let login = loginCell.getTextFieldInfo()
-        let password = passwordCell.getTextFieldInfo()
-        
-        guard let log = login, let pass = password else {
+        if login.isEmpty || password.isEmpty {
+            view.showAlert(with: "Заполните все поля!", handler: nil)
             return
         }
         
-        // Alternative:
-        //if log.isEmpty || pass.isEmpty
-        if log == "" || pass == "" {
-            view.showAlert(with: "Заполните все поля!")
-            return
-        }
-        
+        let credentials = [
+            "name": login,
+            "password": password
+        ]
+
         switch actionType {
-        case .createAccount: ()
-            //
-        case .login: ()
-            // 
+        case .createAccount:
+            let onSuccess = { (data: NSDictionary) in
+                let handler = { [weak self] in
+                    self?.router.presentAccountsView()
+                }
+                self.view.showAlert(with: "Профиль создан!", handler: handler)
+            }
+            
+            let onFailure = {
+                self.view.showAlert(with: "Произошла ошибка при создании профиля!", handler: nil)
+            }
+            interactor.createUser(credentials: credentials, onSuccess: onSuccess, onFailure: onFailure)
+            
+        case .login:
+            let onSuccess = { (data: NSDictionary) in
+                self.router.presentAccountsView()
+            }
+            
+            let onFailure = {
+                self.view.showAlert(with: "Логин и пароль введены некорректно!", handler: nil)
+            }
+            interactor.loginUser(credentials: credentials, onSuccess: onSuccess, onFailure: onFailure)
         }
-        
-        router.presentAccountsView() //
     }
 }
