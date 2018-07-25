@@ -1,6 +1,9 @@
 import Alamofire
 
 
+// REVIEW: Global variables, seriously? Refactor it. See network requests example in LoginInteractor.
+// Hint: You can create Consts class and put API_ROOT_URL there as static.
+
 let API_ROOT_URL = "http://localhost:8080/" 
 
 var id: Int? // !!

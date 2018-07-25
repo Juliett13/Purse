@@ -76,6 +76,9 @@ extension UITableView
 }
 
 
+/**
+ REVIEW: Good use of Reusable protocol.
+ */
 
 // MARK: - UIStoryboard
 

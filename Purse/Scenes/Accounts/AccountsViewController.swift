@@ -1,6 +1,8 @@
 import Foundation
 import UIKit
 
+// REVIEW: Fanfastic, with extensions code is mush more readable.
+
 class AccountsViewController: UIViewController, OperationTypesViewProtocol, Reusable {
  
     var presenter: AccountsPresenterProtocol!

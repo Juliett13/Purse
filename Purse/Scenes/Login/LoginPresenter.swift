@@ -11,16 +11,21 @@ class LoginPresenter {
     var login = ""
     var password = ""
 
+    // REVIEW: Practice shows that using enum with values to manage cells order is tiresome and dangerous if screen structure changes.
+    // Consider putting enum cases into array.
+    // enum Sections
     enum FieldType: Int {
         case login = 0
         case password = 1
     }
+    
+    // This way you will have only to switch items order in the array. For example [.password, .login].
+    let sections: [FieldType] = [.login, .password]
 
     enum ActionType {
         case createAccount
         case login
     }
-
 
     init(view: LoginViewController, router: LoginRouterProtocol, actionType: ActionType) {
         self.view = view
@@ -34,24 +39,33 @@ class LoginPresenter {
 extension LoginPresenter: LoginPresenterProtocol {
     
     var fieldsCount: Int {
-        get {
-            return loginFieldsCount
-        }
+        // REVIEW: No need to explicidly use get without setter.
+        return loginFieldsCount
     }
     
     func fieldName(for row: Int) -> String {
-        switch row {
-        case FieldType.login.rawValue:
+        
+        // REVIEW: Example of array usage.
+        guard let cell = self.sections.item(at: row) else
+        {
+            return String()
+        }
+        
+        switch cell
+        {
+        case .login:
             return("Логин")
-        case FieldType.password.rawValue:
+        case .password:
             return("Пароль")
-        default:
-            return ""
         }
     }
 
     func fieldIsSecure(for row: Int) -> Bool {
-        return row == FieldType.password.rawValue
+        guard let cell = self.sections.item(at: row) else
+        {
+            return false
+        }
+        return cell == .password
     }
     
     func configureButton() {
@@ -95,6 +109,7 @@ extension LoginPresenter: LoginPresenterProtocol {
             return
         }
         
+        // Use DTO
         let credentials = [
             "name": login,
             "password": password
@@ -102,15 +117,16 @@ extension LoginPresenter: LoginPresenterProtocol {
 
         switch actionType {
         case .createAccount:
-            let onSuccess = { (data: NSDictionary) in
+            let onSuccess: (NSDictionary) -> Void = { [weak self] data in
                 let handler = { [weak self] in
                     self?.router.presentAccountsView()
                 }
-                self.view.showAlert(with: "Профиль создан!", handler: handler)
+                self?.view.showAlert(with: "Профиль создан!", handler: handler)
             }
             
-            let onFailure = {
-                self.view.showAlert(with: "Произошла ошибка при создании профиля!", handler: nil)
+            // REVIEW: Don't use strong self in blocks. Fix in other places too.
+            let onFailure: () -> Void = { [weak self] in
+                self?.view.showAlert(with: "Произошла ошибка при создании профиля!", handler: nil)
             }
             interactor.createUser(credentials: credentials, onSuccess: onSuccess, onFailure: onFailure)
             

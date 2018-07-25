@@ -47,6 +47,7 @@
 		49F0440120FA7BC500C48E10 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F0440020FA7BC500C48E10 /* LoginViewController.swift */; };
 		5D00BEBF21008B6700234199 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D00BEBE21008B6700234199 /* Reusable.swift */; };
 		5D00BEC12100922F00234199 /* LoginProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D00BEC02100922F00234199 /* LoginProtocols.swift */; };
+		5DBEDDB721073B72004F59C0 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBEDDB621073B72004F59C0 /* ArrayExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +115,7 @@
 		49F0440020FA7BC500C48E10 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5D00BEBE21008B6700234199 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		5D00BEC02100922F00234199 /* LoginProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProtocols.swift; sourceTree = "<group>"; };
+		5DBEDDB621073B72004F59C0 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		68AEFEEABF80790164CDE05F /* Pods-Purse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Purse.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Purse/Pods-Purse.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -294,6 +296,7 @@
 		5D00BEBC21008B4900234199 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				5DBEDDB821073B75004F59C0 /* Extensions */,
 				4909682A2101F9C300E03BAC /* Server */,
 				5D00BEBD21008B5400234199 /* Protocols */,
 			);
@@ -306,6 +309,14 @@
 				5D00BEBE21008B6700234199 /* Reusable.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		5DBEDDB821073B75004F59C0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5DBEDDB621073B72004F59C0 /* ArrayExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		6CBC6D34450E6D6DD1A9EA34 /* Frameworks */ = {
@@ -522,6 +533,7 @@
 				4964BAD220F249CE006A236F /* OperationTypesView.swift in Sources */,
 				493F6DD620EB3C3A002B8120 /* DropDownView.swift in Sources */,
 				49F043FD20FA7B7F00C48E10 /* NewOperationPresenter.swift in Sources */,
+				5DBEDDB721073B72004F59C0 /* ArrayExtension.swift in Sources */,
 				49B808EB2106F5920097080A /* NewOperationConfigurator.swift in Sources */,
 				49F0440120FA7BC500C48E10 /* LoginViewController.swift in Sources */,
 				49C5F8BA20FDA6FA001386AC /* CheckProfileRouter.swift in Sources */,

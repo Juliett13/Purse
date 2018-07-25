@@ -12,6 +12,7 @@ class LoginConfigurator: LoginConfiguratorProtocol {
         self.actionType = actionType
     }
 
+    // REVIEW: Previous module knows and initializes viewController. It shouldn't.
     func configure(view: LoginViewController) {
         let router = LoginRouter(view: view)
         let presenter = LoginPresenter(view: view, router: router, actionType: actionType)
