@@ -1,7 +1,5 @@
 import UIKit
 
-// REVIEW: Name extension files like ClassName+Extensions or ClassNameExtensions.
-// This helps to navigate in massive amount of files.
 @IBDesignable extension UIView {
     @IBInspectable var borderColor: UIColor? {
         set {

@@ -12,22 +12,19 @@ class CheckProfileRouter {
 
 extension CheckProfileRouter: CheckProfileRouterProtocol {
     func presentLoginView() {
-        pushView(with: .login)
+        pushView(actionType: .login)
     }
     
     func presentCreateProfileView() {
-        pushView(with: .createAccount)
+        pushView(actionType: .createAccount)
     }
     
-    private func pushView(with actionType: LoginPresenter.ActionType) {
-        guard
-            let view = view,
-            let targetView: LoginViewController = view.storyboard?.instantiateViewController() else {
+    private func pushView(actionType: LoginPresenter.ActionType) {
+        guard let view = view else {
             return
         }
 
-        targetView.configurator = LoginConfigurator(actionType: actionType)
-
-        view.navigationController?.pushViewController(targetView, animated: true)
+        let configurator = LoginConfigurator(actionType: actionType)
+        view.navigationController?.pushViewController(configurator.viewController, animated: true)
     }
 }

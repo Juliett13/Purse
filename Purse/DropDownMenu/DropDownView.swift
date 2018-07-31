@@ -1,24 +1,14 @@
 import UIKit
 
-protocol DropDownProtocol: class {
-    func dropDownPressed(rowValue: Int, title: String)
-}
-
-class DropDownView: UIView, UITableViewDelegate, UITableViewDataSource {
-    
-    var dropDownOptions = [String]()
-    
+class DropDownView: UIView {
+    weak var delegate : DropDownViewDelegateProtocol?
     var tableView = UITableView()
-    
-    weak var delegate : DropDownProtocol?
-    
+
+    var dropDownOptions = [String]()
+    var cellBackgroundColor = UIColor.white
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        tableView.layer.cornerRadius = 15
-        tableView.layer.borderWidth = 1
-        tableView.layer.borderColor = UIColor(red: 121.0 / 255.0, green: 190.0 / 255.0, blue: 112.0 / 255.0, alpha: 1).cgColor
-
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -31,11 +21,26 @@ class DropDownView: UIView, UITableViewDelegate, UITableViewDataSource {
         tableView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
-    
+
+    func configure(borderWidth: CGFloat,
+                   cornerRadius: CGFloat,
+                   borderColor: UIColor,
+                   backgroundColor: UIColor) {
+        tableView.layer.borderWidth = borderWidth
+        tableView.layer.cornerRadius = cornerRadius
+        tableView.layer.borderColor = borderColor.cgColor
+        tableView.backgroundColor = backgroundColor
+        self.cellBackgroundColor = backgroundColor
+    }
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+}
+
+// MARK: - UITableViewDelegate, UITableViewDataSource
+
+extension DropDownView: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -44,16 +49,20 @@ class DropDownView: UIView, UITableViewDelegate, UITableViewDataSource {
         return dropDownOptions.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.textLabel?.text = dropDownOptions[indexPath.row]
         cell.textLabel?.textColor = UIColor.black
+        cell.textLabel?.backgroundColor = cellBackgroundColor
+        cell.layer.backgroundColor = cellBackgroundColor.cgColor
+        cell.contentView.layer.backgroundColor = cellBackgroundColor.cgColor
+        cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.delegate?.dropDownPressed(rowValue: indexPath.row, title: dropDownOptions[indexPath.row])
-        self.tableView.deselectRow(at: indexPath, animated: true)
+        self.delegate?.dropDownPressed(rowValue: indexPath.row)
     }
 }
 

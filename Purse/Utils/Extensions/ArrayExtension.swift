@@ -1,11 +1,3 @@
-//
-//  ArrayExtension.swift
-//  Purse
-//
-//  Created by Anastasia Tarasova on 24/07/2018.
-//  Copyright © 2018 C3G9. All rights reserved.
-//
-
 import Foundation
 
 extension Array

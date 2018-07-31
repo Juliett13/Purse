@@ -4,10 +4,11 @@ protocol OperationTypesViewProtocol {
     var operationTypesView: OperationTypesView! {get set}
 }
 
-class OperationTypesView: UIView, UIGestureRecognizerDelegate {
+class OperationTypesView: UIView {
     var onIncomePressed: (() -> ()?)?
     var onOutgoPressed: (() -> ()?)?
     var onTransferPressed: (() -> ()?)?
+    var viewWasHidden: (() -> ()?)?
 
     var visualEffectView: UIVisualEffectView!
     var containerView: UIView!
@@ -26,50 +27,77 @@ class OperationTypesView: UIView, UIGestureRecognizerDelegate {
         
         createButtons()
     }
-    
-    private func createVisualEffectView() {
-        visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleOutsideTap))
-        tap.delegate = self
-        visualEffectView.addGestureRecognizer(tap)
-    }
-    
+
     private func createContainerView() {
         let outsideDistance = (Int(UIScreen.main.bounds.width) - 3 * buttonSize - 4 * insideDistance) / 2
         containerView = UIView()
-        containerView.frame = CGRect(x: Int(UIScreen.main.bounds.width) - buttonSize - 3 * outsideDistance, y: outsideDistance , width: buttonSize + 2 * insideDistance, height: buttonSize * 3 + insideDistance * 4)
-        containerView.backgroundColor = UIColor(red: 200.0 / 255.0, green: 200.0 / 255.0, blue: 200.0 / 255.0, alpha: 0.5)
+        containerView.frame = CGRect(
+            x: Int(UIScreen.main.bounds.width) - buttonSize - 3 * outsideDistance,
+            y: outsideDistance , width: buttonSize + 2 * insideDistance,
+            height: buttonSize * 3 + insideDistance * 4)
+        containerView.backgroundColor = UIColor(
+            red: 200.0 / 255.0,
+            green: 200.0 / 255.0,
+            blue: 200.0 / 255.0,
+            alpha: 0.5)
         containerView.layer.cornerRadius = 35
     }
     
     private func createButtons() {
-        let incomeButton = UIButton(frame: CGRect(x: insideDistance, y: insideDistance, width: buttonSize, height: buttonSize))
-        
-        let outgoButton = UIButton(frame: CGRect(x: insideDistance, y: 2 * insideDistance + buttonSize, width: buttonSize, height: buttonSize))
-        
-        let transferButton = UIButton(frame: CGRect(x: insideDistance, y: 3 * insideDistance + 2 * buttonSize, width: buttonSize, height: buttonSize))
-        
+        let incomeButton = UIButton(frame: CGRect(
+            x: insideDistance,
+            y: insideDistance,
+            width: buttonSize,
+            height: buttonSize))
+//        incomeButton.setTitle("➕", for: .normal)
+
+        let outgoButton = UIButton(frame: CGRect(
+            x: insideDistance,
+            y: 2 * insideDistance + buttonSize,
+            width: buttonSize,
+            height: buttonSize))
+//        outgoButton.setTitle("➖", for: .normal)
+
+        let transferButton = UIButton(frame: CGRect(
+            x: insideDistance,
+            y: 3 * insideDistance + 2 * buttonSize,
+            width: buttonSize,
+            height: buttonSize))
+//        transferButton.setTitle("🔛", for: .normal)
+
         containerView.addSubview(incomeButton)
         containerView.addSubview(outgoButton)
         containerView.addSubview(transferButton)
         
         initButton(incomeButton)
-        incomeButton.setImage(UIImage(named: ""), for: .normal) //
+        incomeButton.setImage(UIImage(named: "income"), for: .normal)
         
         initButton(outgoButton)
-        outgoButton.setImage(UIImage(named: ""), for: .normal) //
+        outgoButton.setImage(UIImage(named: "outgo"), for: .normal)
         
         initButton(transferButton)
-        transferButton.setImage(UIImage(named: ""), for: .normal) //
+        transferButton.setImage(UIImage(named: "transfer"), for: .normal)
         
-        incomeButton.addTarget(self, action: #selector(self.incomeButtonPressed), for: .touchUpInside)
-        outgoButton.addTarget(self, action: #selector(self.outgoButtonPressed), for: .touchUpInside)
-        transferButton.addTarget(self, action: #selector(self.transferButtonPressed), for: .touchUpInside)
+        incomeButton.addTarget(
+            self,
+            action: #selector(self.incomeButtonPressed),
+            for: .touchUpInside)
+        outgoButton.addTarget(
+            self,
+            action: #selector(self.outgoButtonPressed),
+            for: .touchUpInside)
+        transferButton.addTarget(
+            self,
+            action: #selector(self.transferButtonPressed),
+            for: .touchUpInside)
     }
     
     private func initButton(_ btn: UIButton) {
-        let btnColor = UIColor(displayP3Red: 136.0 / 255.0, green: 176.0 / 255.0, blue: 75.0 / 255.0, alpha: 1)
+        let btnColor = UIColor(
+            displayP3Red: 136.0 / 255.0,
+            green: 176.0 / 255.0,
+            blue: 75.0 / 255.0,
+            alpha: 1)
         btn.layer.borderColor = btnColor.cgColor
         btn.layer.borderWidth = 1
         btn.setTitleColor(.white, for: .normal)
@@ -94,7 +122,9 @@ class OperationTypesView: UIView, UIGestureRecognizerDelegate {
         
         if let navigationBarHeight = vc.navigationController?.navigationBar.bounds.height {
             self.center.y += navigationBarHeight
-            containerView.frame.offsetBy(dx: navigationBarHeight, dy: 0)
+            containerView.frame.offsetBy(
+                dx: navigationBarHeight,
+                dy: 0)
         }
         
         visualEffectView.center = self.center
@@ -102,13 +132,17 @@ class OperationTypesView: UIView, UIGestureRecognizerDelegate {
         let dx = vc.view.frame.width - self.containerView.layer.position.x
         let dy = -self.containerView.layer.position.y
 
-        self.containerView.transform = CGAffineTransform(translationX: dx, y: dy).scaledBy(x: 0.1, y: 0.3)
+        self.containerView.transform = CGAffineTransform(
+            translationX: dx,
+            y: dy).scaledBy(
+                x: 0.1,
+                y: 0.3)
         self.alpha = 0
         
-        UIView.animate(withDuration: 0.3, animations:  {
-            self.alpha = 1
-            self.visualEffectView.effect = UIBlurEffect(style: .light)
-            self.containerView.transform = CGAffineTransform.identity
+        UIView.animate(withDuration: 0.3, animations:  { [weak self] in
+            self?.alpha = 1
+            self?.visualEffectView.effect = UIBlurEffect(style: .light)
+            self?.containerView.transform = CGAffineTransform.identity
         })
         
     }
@@ -120,14 +154,19 @@ class OperationTypesView: UIView, UIGestureRecognizerDelegate {
 
         let timeInterval = 0.3
         
-        UIView.animate(withDuration: timeInterval, animations:  { 
-            self.alpha = 0
-            self.containerView.transform = CGAffineTransform(translationX: dx, y: dy).scaledBy(x: 0.1, y: 0.3)
+        UIView.animate(withDuration: timeInterval, animations:  { [weak self] in
+            self?.alpha = 0
+            self?.containerView.transform = CGAffineTransform(
+                translationX: dx,
+                y: dy).scaledBy(
+                    x: 0.1,
+                    y: 0.3)
         })
         
         Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: false) { t in
             self.removeFromSuperview()
         }
+        viewWasHidden?()
     }
     
     @objc func incomeButtonPressed(sender: UIButton) {
@@ -144,7 +183,21 @@ class OperationTypesView: UIView, UIGestureRecognizerDelegate {
         self.onTransferPressed?()
         hide()
     }
-    
+}
+
+// MARK: - UIGestureRecognizerDelegate
+
+extension OperationTypesView: UIGestureRecognizerDelegate {
+    private func createVisualEffectView() {
+        visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
+
+        let tap = UITapGestureRecognizer(
+            target: self,
+            action: #selector(self.handleOutsideTap))
+        tap.delegate = self
+        visualEffectView.addGestureRecognizer(tap)
+    }
+
     @objc func handleOutsideTap(sender: UITapGestureRecognizer? = nil) {
         hide()
     }

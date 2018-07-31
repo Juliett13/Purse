@@ -5,29 +5,26 @@ class LoginPresenter {
     var interactor: LoginInteractorProtocol!
     let router: LoginRouterProtocol
 
-    private let loginFieldsCount = 2
-
     var actionType: ActionType
     var login = ""
     var password = ""
 
-    // REVIEW: Practice shows that using enum with values to manage cells order is tiresome and dangerous if screen structure changes.
-    // Consider putting enum cases into array.
-    // enum Sections
-    enum FieldType: Int {
+    enum Sections: Int {
         case login = 0
         case password = 1
     }
     
-    // This way you will have only to switch items order in the array. For example [.password, .login].
-    let sections: [FieldType] = [.login, .password]
+    let sections: [Sections] = [.login, .password]
 
     enum ActionType {
         case createAccount
         case login
     }
 
-    init(view: LoginViewController, router: LoginRouterProtocol, actionType: ActionType) {
+    init(view: LoginViewController,
+         router: LoginRouterProtocol,
+         actionType: ActionType) {
+
         self.view = view
         self.router = router
         self.actionType = actionType
@@ -39,13 +36,11 @@ class LoginPresenter {
 extension LoginPresenter: LoginPresenterProtocol {
     
     var fieldsCount: Int {
-        // REVIEW: No need to explicidly use get without setter.
-        return loginFieldsCount
+        return sections.count
     }
     
     func fieldName(for row: Int) -> String {
         
-        // REVIEW: Example of array usage.
         guard let cell = self.sections.item(at: row) else
         {
             return String()
@@ -79,66 +74,81 @@ extension LoginPresenter: LoginPresenterProtocol {
         view.setButtonTitle(text: name)
     }
     
-    func shouldChangeCharacters(in range: NSRange, replacementString string: String, for row: Int) -> Bool {
-        switch row {
-        case FieldType.login.rawValue:
+    func shouldChangeCharacters(in range: NSRange,
+                                replacementString string: String,
+                                for row: Int) -> Bool {
+
+        guard let cell = self.sections.item(at: row) else
+        {
+            return false
+        }
+
+        switch cell {
+        case .login:
             guard let textRange = Range(range, in: login) else
             {
                 return false
             }
             login = login.replacingCharacters(in: textRange, with: string)
             
-        case FieldType.password.rawValue:
+        case .password:
             guard let textRange = Range(range, in: password) else
             {
                 return false
             }
             password = password.replacingCharacters(in: textRange, with: string)
-            
-        default:
-            return false
         }
-        
         return true
     }
     
     func tryLogin() {
 
         if login.isEmpty || password.isEmpty {
-            view.showAlert(with: "Заполните все поля!", handler: nil)
+            view.showAlert(
+                with: "Заполните все поля!",
+                handler: nil)
             return
         }
-        
-        // Use DTO
-        let credentials = [
-            "name": login,
-            "password": password
-        ]
+
+        let dto = LoginDto(login: login, password: password)
 
         switch actionType {
         case .createAccount:
-            let onSuccess: (NSDictionary) -> Void = { [weak self] data in
+            let onSuccess: () -> Void = { [weak self] in
                 let handler = { [weak self] in
                     self?.router.presentAccountsView()
                 }
-                self?.view.showAlert(with: "Профиль создан!", handler: handler)
+                self?.view.showAlert(
+                    with: "Профиль создан!",
+                    handler: handler)
             }
             
-            // REVIEW: Don't use strong self in blocks. Fix in other places too.
             let onFailure: () -> Void = { [weak self] in
-                self?.view.showAlert(with: "Произошла ошибка при создании профиля!", handler: nil)
+                self?.view.showAlert(
+                    with: "Произошла ошибка при создании профиля!",
+                    handler: nil)
             }
-            interactor.createUser(credentials: credentials, onSuccess: onSuccess, onFailure: onFailure)
+
+            interactor.createUser(
+                dto: dto,
+                onSuccess: onSuccess,
+                onFailure: onFailure)
             
         case .login:
-            let onSuccess = { (data: NSDictionary) in
-                self.router.presentAccountsView()
+            let onSuccess: () -> Void = { [weak self] in
+                self?.router.presentAccountsView()
             }
             
-            let onFailure = {
-                self.view.showAlert(with: "Логин и пароль введены некорректно!", handler: nil)
+            let onFailure: () -> Void  = { [weak self] in
+                self?.view.showAlert(
+                    with: "Логин и пароль введены некорректно!",
+                    handler: nil)
             }
-            interactor.loginUser(credentials: credentials, onSuccess: onSuccess, onFailure: onFailure)
+
+            interactor.loginUser(
+                dto: dto,
+                onSuccess: onSuccess,
+                onFailure: onFailure)
         }
     }
 }

@@ -1,23 +1,23 @@
-protocol LoginConfiguratorProtocol {
-    func configure(view: LoginViewController) 
-}
+import UIKit
 
 // MARK: - LoginConfiguratorProtocol
 
 class LoginConfigurator: LoginConfiguratorProtocol {
 
-    let actionType: LoginPresenter.ActionType
+    var viewController: UIViewController
 
-    init(actionType: LoginPresenter.ActionType) {
-        self.actionType = actionType
-    }
-
-    // REVIEW: Previous module knows and initializes viewController. It shouldn't.
-    func configure(view: LoginViewController) {
+    required init(actionType: LoginPresenter.ActionType) {
+        let loginView: LoginViewController? = UIStoryboard(storyboard: .main).instantiateViewController()
+        guard let view = loginView else {
+            viewController = UIViewController()
+            return
+        }
+        
         let router = LoginRouter(view: view)
         let presenter = LoginPresenter(view: view, router: router, actionType: actionType)
         view.presenter = presenter
         let interactor = LoginInteractor(presenter: presenter)
         presenter.interactor = interactor
+        viewController = view
     }
 }

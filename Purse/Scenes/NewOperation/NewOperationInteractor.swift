@@ -1,8 +1,9 @@
 import Foundation
+import PromiseKit
 
-class NewOperationInteractor: Queryable {
+class NewOperationInteractor {
     unowned var presenter: NewOperationPresenter
-    
+
     init(presenter: NewOperationPresenter) {
         self.presenter = presenter
     }
@@ -11,18 +12,53 @@ class NewOperationInteractor: Queryable {
 // MARK: - NewOperationInteractorProtocol
 
 extension NewOperationInteractor: NewOperationInteractorProtocol {
-    func createIncome(credentials: [String : Any], headers: [String: String], onSuccess: @escaping (Any) -> (), onFailure: @escaping () -> ()) {
-        let url = "operation/income"
-        post(url: url, headers: headers, credentials: credentials, onSuccess: onSuccess, onFailure: onFailure)
+    func createIncome(dto: IncomeOutgoDto,
+                      onSuccess: @escaping () -> (),
+                      onFailure: @escaping () -> ()) {
+
+        let request = Request.Operation.Income.Post(
+            sum: dto.sum,
+            accountId: dto.accountId,
+            comment: dto.comment)
+
+        request.send().done { _ in
+            onSuccess()
+            }.catch { _ in
+                onFailure()
+        }
     }
-    
-    func createOutgo(credentials: [String : Any], headers: [String: String], onSuccess: @escaping (Any) -> (), onFailure: @escaping () -> ()) {
-        let url = "operation/outgo"
-        post(url: url, headers: headers, credentials: credentials, onSuccess: onSuccess, onFailure: onFailure)
+
+    func createOutgo(dto: IncomeOutgoDto,
+                     onSuccess: @escaping () -> (),
+                     onFailure: @escaping () -> ()) {
+
+        let request = Request.Operation.Outgo.Post(
+            sum: dto.sum,
+            accountId: dto.accountId,
+            comment: dto.comment)
+
+        request.send().done { _ in
+            onSuccess()
+            }.catch { _ in
+                onFailure()
+        }
     }
-    
-    func createTransfer(credentials: [String : Any], headers: [String: String], onSuccess: @escaping (Any) -> (), onFailure: @escaping () -> ()) {
-        let url = "operation/transfer"
-        post(url: url, headers: headers, credentials: credentials, onSuccess: onSuccess, onFailure: onFailure)
+
+    func createTransfer(dto: TransferDto,
+                        onSuccess: @escaping () -> (),
+                        onFailure: @escaping () -> ()) {
+
+        let request = Request.Operation.Transfer.Post(
+            sum: dto.sum,
+            firstAccountId: dto.firstAccountId,
+            secondAccountId: dto.secondAccountId,
+            comment: dto.comment)
+
+        request.send().done { _ in
+            onSuccess()
+            }.catch { _ in
+                onFailure()
+        }
     }
 }
+

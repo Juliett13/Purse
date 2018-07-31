@@ -1,7 +1,5 @@
 import UIKit
 
-// REVIEW: Use protocol with default implementation to add reuseId to object. This way allows you to use it in generic functions. 
-
 // MARK: - Reusable
 
 protocol Reusable: class
@@ -11,7 +9,6 @@ protocol Reusable: class
 
 extension Reusable
 {
-    /// Returns object's class name
     static var reuseIdentifier: String
     {
         return String(describing: self)
@@ -39,26 +36,15 @@ extension NibLoadableView where Self: UIView
     }
 }
 
-
-/**
- REVIEW: For example, you can write an extension for UITableView for cells management.
- */
-
 // MARK: - UITableView
 
 extension UITableView
 {
-    /**
-     Register cell which doesn't require nib
-     */
     func register<T: UITableViewCell>(_: T.Type) where T: Reusable
     {
         self.register(T.self, forCellReuseIdentifier: T.reuseIdentifier)
     }
     
-    /**
-     Register cell which requires nib.
-     */
     func register<T: UITableViewCell>(_: T.Type) where T: Reusable & NibLoadableView
     {
         guard let nib = T.nib else
@@ -75,15 +61,22 @@ extension UITableView
     }
 }
 
-
-/**
- REVIEW: Good use of Reusable protocol.
- */
-
 // MARK: - UIStoryboard
 
 extension UIStoryboard
 {
+    enum Storyboard: String {
+        case main
+
+        var filename: String {
+            return rawValue.capitalized
+        }
+    }
+
+    convenience init(storyboard: Storyboard, bundle: Bundle? = nil) {
+        self.init(name: storyboard.filename, bundle: bundle)
+    }
+
     func instantiateViewController<T: UIViewController>() -> T?  where T: Reusable
     {
         return self.instantiateViewController(withIdentifier: T.reuseIdentifier) as? T

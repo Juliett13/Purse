@@ -1,59 +1,48 @@
 import Foundation
+import UIKit
 
 // MARK: - View
 
 protocol NewOperationViewProtocol: class {
-    func setConfiguration(firstAccountLabelText: String, secondAccountLabelText: String, secondAccountIsHidden: Bool)
-    func showAlert(with message: String, handler: (() -> ()?)?) 
+    func setConfiguration(firstAccountLabelText: String,
+                          secondAccountLabelText: String,
+                          secondAccountIsHidden: Bool)
+    func showAlert(with message: String, handler: (() -> ()?)?)
 }
 
 // MARK: - Presenter
 
 protocol NewOperationPresenterProtocol {
-    // REVIEW: General info - The tricky thing about variables in protocols is when you implement protocol, you have no way to know, if variable is get-only.
-    var operationType: Int { get set }
+    var operationType: OperationModel.Types { get set }
     var accountsCount: Int { get }
     var firstAccountTag: Int { get }
     var secondAccountTag: Int { get }
     var sumTag: Int { get }
     var commentTag: Int { get }
-    
+    var allowTransfer: Bool { get }
+
     func operationTypeChanged(id: Int)
     func prepareView()
+    func savePressed()
     func accountName(for row: Int) -> String
     func didSelectAccount(tag: Int, row: Int)
-    func shouldChangeCharacters(in range: NSRange, replacementString string: String, tag: Int) -> Bool
-    // REVIEW: Name user actions more clearly like "savePressed"
-    func save()
+    func shouldChangeCharacters(in range: NSRange,
+                                replacementString string: String,
+                                tag: Int) -> Bool
 }
 
 // MARK: - Interactor
 
-// REVIEW: Example of data passing to Interactor
-
-struct IncomeDto
-{
-    var sum: Int
-    var comment: String
-    var accountId: String
-}
-
 protocol NewOperationInteractorProtocol: class {
-    // REVIEW: Use DTOs like structs or classes, not dictionarires. It is very easy to mistype.
-    // Presenter wants a job done. It provides interactor with data and waits for response. It doesn't care about how interactor is going to process a task. It doesn't know about restApi, database or any other services.
-    func createIncome(dto: IncomeDto, onSuccess: @escaping (Any) -> (), onFailure: @escaping () -> ())
-    
-    func createIncome(credentials: [String : Any], headers: [String: String], onSuccess: @escaping (Any) -> (), onFailure: @escaping () -> ())
-    func createOutgo(credentials: [String : Any], headers: [String: String], onSuccess: @escaping (Any) -> (), onFailure: @escaping () -> ())
-    func createTransfer(credentials: [String : Any], headers: [String: String], onSuccess: @escaping (Any) -> (), onFailure: @escaping () -> ())
-}
-
-extension NewOperationInteractorProtocol
-{
-    func createIncome(dto: IncomeDto, onSuccess: @escaping (Any) -> (), onFailure: @escaping () -> ())
-    {
-        
-    }
+    func createIncome(dto: IncomeOutgoDto,
+                      onSuccess: @escaping () -> (),
+                      onFailure: @escaping () -> ())
+    func createOutgo(dto: IncomeOutgoDto,
+                     onSuccess: @escaping () -> (),
+                     onFailure: @escaping () -> ())
+    func createTransfer(dto: TransferDto,
+                        onSuccess: @escaping () -> (),
+                        onFailure: @escaping () -> ())
 }
 
 // MARK: - Router
@@ -62,3 +51,9 @@ protocol NewOperationRouterProtocol {
     func popView()
 }
 
+// MARK: - Configurator
+
+protocol NewOperationConfiguratorProtocol {
+    var viewController: UIViewController { get }
+    init(operationType: OperationModel.Types, accounts: [AccountModel])
+}

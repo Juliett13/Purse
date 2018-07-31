@@ -11,7 +11,6 @@
 		490968232101F8EE00E03BAC /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490968222101F8EE00E03BAC /* LoginInteractor.swift */; };
 		490968252101F8FF00E03BAC /* AccountsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490968242101F8FF00E03BAC /* AccountsInteractor.swift */; };
 		490968272101F90F00E03BAC /* NewOperationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490968262101F90F00E03BAC /* NewOperationInteractor.swift */; };
-		4909682C2101F9F800E03BAC /* Queryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4909682B2101F9F800E03BAC /* Queryable.swift */; };
 		493F6DD420EB3C13002B8120 /* DropDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493F6DD320EB3C13002B8120 /* DropDownButton.swift */; };
 		493F6DD620EB3C3A002B8120 /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493F6DD520EB3C3A002B8120 /* DropDownView.swift */; };
 		495BCCA92100FAD800F53664 /* CheckProfileProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495BCCA82100FAD800F53664 /* CheckProfileProtocols.swift */; };
@@ -27,14 +26,25 @@
 		498C211520E7679E001F59FB /* PurseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498C211420E7679E001F59FB /* PurseUITests.swift */; };
 		498C212320E788AF001F59FB /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498C212220E788AF001F59FB /* AccountsViewController.swift */; };
 		498C212720E78D0C001F59FB /* OperationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498C212620E78D0C001F59FB /* OperationTableViewCell.swift */; };
+		498CEBA22109B57200E8AEFF /* NewAccountProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498CEBA12109B57200E8AEFF /* NewAccountProtocols.swift */; };
+		498CEBA42109B58400E8AEFF /* NewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498CEBA32109B58400E8AEFF /* NewAccountViewController.swift */; };
+		498CEBA62109B61600E8AEFF /* NewAccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498CEBA52109B61600E8AEFF /* NewAccountPresenter.swift */; };
+		498CEBA82109B62200E8AEFF /* NewAccountInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498CEBA72109B62200E8AEFF /* NewAccountInteractor.swift */; };
+		498CEBAA2109B63000E8AEFF /* NewAccountRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498CEBA92109B63000E8AEFF /* NewAccountRouter.swift */; };
+		498CEBAC2109B64400E8AEFF /* NewAccountConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498CEBAB2109B64400E8AEFF /* NewAccountConfigurator.swift */; };
 		49998F43210629F400ABE808 /* NewOperationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49998F42210629F400ABE808 /* NewOperationRouter.swift */; };
 		49A8529320FBA2AC0056684A /* LoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A8529220FBA2AC0056684A /* LoginTableViewCell.swift */; };
 		49B808E72106ED270097080A /* LoginConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B808E62106ED270097080A /* LoginConfigurator.swift */; };
 		49B808E92106F3DC0097080A /* AccountsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B808E82106F3DC0097080A /* AccountsConfigurator.swift */; };
 		49B808EB2106F5920097080A /* NewOperationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B808EA2106F5920097080A /* NewOperationConfigurator.swift */; };
-		49C11B2A20FBD57D00715403 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C11B2920FBD57D00715403 /* UIView.swift */; };
+		49C11B2A20FBD57D00715403 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C11B2920FBD57D00715403 /* UIViewExtensions.swift */; };
 		49C11B2D20FBDF3E00715403 /* CheckProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C11B2C20FBDF3E00715403 /* CheckProfileViewController.swift */; };
 		49C11B2F20FBE00600715403 /* CheckProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C11B2E20FBE00600715403 /* CheckProfilePresenter.swift */; };
+		49C2C4FC210DBBA500BEEE9B /* NetworkProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C2C4FB210DBBA500BEEE9B /* NetworkProtocols.swift */; };
+		49C2C4FE210DBC4300BEEE9B /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C2C4FD210DBC4300BEEE9B /* NetworkRequest.swift */; };
+		49C2C500210DBC7B00BEEE9B /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C2C4FF210DBC7B00BEEE9B /* NetworkClient.swift */; };
+		49C2C502210DBD5A00BEEE9B /* DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C2C501210DBD5A00BEEE9B /* DTO.swift */; };
+		49C2C504210F831900BEEE9B /* DropDownMenuProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C2C503210F831900BEEE9B /* DropDownMenuProtocols.swift */; };
 		49C5F8BA20FDA6FA001386AC /* CheckProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C5F8B920FDA6FA001386AC /* CheckProfileRouter.swift */; };
 		49C5F8BE20FDB738001386AC /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C5F8BD20FDB738001386AC /* LoginRouter.swift */; };
 		49C5F8C020FDB77A001386AC /* AccountsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C5F8BF20FDB77A001386AC /* AccountsRouter.swift */; };
@@ -73,7 +83,6 @@
 		490968222101F8EE00E03BAC /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		490968242101F8FF00E03BAC /* AccountsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsInteractor.swift; sourceTree = "<group>"; };
 		490968262101F90F00E03BAC /* NewOperationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOperationInteractor.swift; sourceTree = "<group>"; };
-		4909682B2101F9F800E03BAC /* Queryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queryable.swift; sourceTree = "<group>"; };
 		493F6DD320EB3C13002B8120 /* DropDownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownButton.swift; sourceTree = "<group>"; };
 		493F6DD520EB3C3A002B8120 /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
 		495BCCA82100FAD800F53664 /* CheckProfileProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckProfileProtocols.swift; sourceTree = "<group>"; };
@@ -95,14 +104,25 @@
 		498C211620E7679E001F59FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		498C212220E788AF001F59FB /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
 		498C212620E78D0C001F59FB /* OperationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationTableViewCell.swift; sourceTree = "<group>"; };
+		498CEBA12109B57200E8AEFF /* NewAccountProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAccountProtocols.swift; sourceTree = "<group>"; };
+		498CEBA32109B58400E8AEFF /* NewAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAccountViewController.swift; sourceTree = "<group>"; };
+		498CEBA52109B61600E8AEFF /* NewAccountPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAccountPresenter.swift; sourceTree = "<group>"; };
+		498CEBA72109B62200E8AEFF /* NewAccountInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAccountInteractor.swift; sourceTree = "<group>"; };
+		498CEBA92109B63000E8AEFF /* NewAccountRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAccountRouter.swift; sourceTree = "<group>"; };
+		498CEBAB2109B64400E8AEFF /* NewAccountConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAccountConfigurator.swift; sourceTree = "<group>"; };
 		49998F42210629F400ABE808 /* NewOperationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOperationRouter.swift; sourceTree = "<group>"; };
 		49A8529220FBA2AC0056684A /* LoginTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTableViewCell.swift; sourceTree = "<group>"; };
 		49B808E62106ED270097080A /* LoginConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginConfigurator.swift; sourceTree = "<group>"; };
 		49B808E82106F3DC0097080A /* AccountsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsConfigurator.swift; sourceTree = "<group>"; };
 		49B808EA2106F5920097080A /* NewOperationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOperationConfigurator.swift; sourceTree = "<group>"; };
-		49C11B2920FBD57D00715403 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		49C11B2920FBD57D00715403 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		49C11B2C20FBDF3E00715403 /* CheckProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckProfileViewController.swift; sourceTree = "<group>"; };
 		49C11B2E20FBE00600715403 /* CheckProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckProfilePresenter.swift; sourceTree = "<group>"; };
+		49C2C4FB210DBBA500BEEE9B /* NetworkProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocols.swift; sourceTree = "<group>"; };
+		49C2C4FD210DBC4300BEEE9B /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		49C2C4FF210DBC7B00BEEE9B /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		49C2C501210DBD5A00BEEE9B /* DTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTO.swift; sourceTree = "<group>"; };
+		49C2C503210F831900BEEE9B /* DropDownMenuProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownMenuProtocols.swift; sourceTree = "<group>"; };
 		49C5F8B920FDA6FA001386AC /* CheckProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckProfileRouter.swift; sourceTree = "<group>"; };
 		49C5F8BD20FDB738001386AC /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		49C5F8BF20FDB77A001386AC /* AccountsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsRouter.swift; sourceTree = "<group>"; };
@@ -145,17 +165,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4909682A2101F9C300E03BAC /* Server */ = {
-			isa = PBXGroup;
-			children = (
-				4909682B2101F9F800E03BAC /* Queryable.swift */,
-			);
-			path = Server;
-			sourceTree = "<group>";
-		};
 		493F6DD220EB3BD1002B8120 /* DropDownMenu */ = {
 			isa = PBXGroup;
 			children = (
+				49C2C503210F831900BEEE9B /* DropDownMenuProtocols.swift */,
 				493F6DD320EB3C13002B8120 /* DropDownButton.swift */,
 				493F6DD520EB3C3A002B8120 /* DropDownView.swift */,
 			);
@@ -188,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				5D00BEBC21008B4900234199 /* Utils */,
+				49C2C4FA210DBB8600BEEE9B /* Network */,
 				49F043E920FA5C7900C48E10 /* Models */,
 				49F043F220FA786E00C48E10 /* Scenes */,
 				493F6DD220EB3BD1002B8120 /* DropDownMenu */,
@@ -196,7 +210,7 @@
 				498C20FB20E7679D001F59FB /* Assets.xcassets */,
 				498C20FD20E7679D001F59FB /* LaunchScreen.storyboard */,
 				498C210020E7679D001F59FB /* Info.plist */,
-				49C11B2920FBD57D00715403 /* UIView.swift */,
+				49C11B2920FBD57D00715403 /* UIViewExtensions.swift */,
 			);
 			path = Purse;
 			sourceTree = "<group>";
@@ -219,6 +233,19 @@
 			path = PurseUITests;
 			sourceTree = "<group>";
 		};
+		498CEBA02109B55400E8AEFF /* NewAccount */ = {
+			isa = PBXGroup;
+			children = (
+				498CEBA12109B57200E8AEFF /* NewAccountProtocols.swift */,
+				498CEBA32109B58400E8AEFF /* NewAccountViewController.swift */,
+				498CEBA52109B61600E8AEFF /* NewAccountPresenter.swift */,
+				498CEBA72109B62200E8AEFF /* NewAccountInteractor.swift */,
+				498CEBA92109B63000E8AEFF /* NewAccountRouter.swift */,
+				498CEBAB2109B64400E8AEFF /* NewAccountConfigurator.swift */,
+			);
+			path = NewAccount;
+			sourceTree = "<group>";
+		};
 		49C11B2B20FBDED500715403 /* CheckProfileExistence */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +255,17 @@
 				49C5F8B920FDA6FA001386AC /* CheckProfileRouter.swift */,
 			);
 			path = CheckProfileExistence;
+			sourceTree = "<group>";
+		};
+		49C2C4FA210DBB8600BEEE9B /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				49C2C4FB210DBBA500BEEE9B /* NetworkProtocols.swift */,
+				49C2C4FF210DBC7B00BEEE9B /* NetworkClient.swift */,
+				49C2C4FD210DBC4300BEEE9B /* NetworkRequest.swift */,
+				49C2C501210DBD5A00BEEE9B /* DTO.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		49F043E920FA5C7900C48E10 /* Models */ = {
@@ -246,6 +284,7 @@
 				49C11B2B20FBDED500715403 /* CheckProfileExistence */,
 				49F043F520FA787A00C48E10 /* Login */,
 				49F043F420FA787700C48E10 /* Accounts */,
+				498CEBA02109B55400E8AEFF /* NewAccount */,
 				49F043F320FA787400C48E10 /* NewOperation */,
 			);
 			path = Scenes;
@@ -297,7 +336,6 @@
 			isa = PBXGroup;
 			children = (
 				5DBEDDB821073B75004F59C0 /* Extensions */,
-				4909682A2101F9C300E03BAC /* Server */,
 				5D00BEBD21008B5400234199 /* Protocols */,
 			);
 			path = Utils;
@@ -491,10 +529,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Purse/Pods-Purse-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -508,12 +550,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49C2C4FC210DBBA500BEEE9B /* NetworkProtocols.swift in Sources */,
+				498CEBAC2109B64400E8AEFF /* NewAccountConfigurator.swift in Sources */,
+				498CEBA82109B62200E8AEFF /* NewAccountInteractor.swift in Sources */,
+				49C2C500210DBC7B00BEEE9B /* NetworkClient.swift in Sources */,
+				498CEBA22109B57200E8AEFF /* NewAccountProtocols.swift in Sources */,
 				490968252101F8FF00E03BAC /* AccountsInteractor.swift in Sources */,
 				49F043FF20FA7BB100C48E10 /* LoginPresenter.swift in Sources */,
+				49C2C504210F831900BEEE9B /* DropDownMenuProtocols.swift in Sources */,
 				49C11B2F20FBE00600715403 /* CheckProfilePresenter.swift in Sources */,
 				49C5F8C020FDB77A001386AC /* AccountsRouter.swift in Sources */,
 				490968232101F8EE00E03BAC /* LoginInteractor.swift in Sources */,
-				4909682C2101F9F800E03BAC /* Queryable.swift in Sources */,
+				498CEBA42109B58400E8AEFF /* NewAccountViewController.swift in Sources */,
 				49C11B2D20FBDF3E00715403 /* CheckProfileViewController.swift in Sources */,
 				49F043EF20FA5C9F00C48E10 /* Account.swift in Sources */,
 				498C20F520E76798001F59FB /* AppDelegate.swift in Sources */,
@@ -532,14 +580,18 @@
 				496785CB20F2CEA00071CB8B /* NewOperationViewController.swift in Sources */,
 				4964BAD220F249CE006A236F /* OperationTypesView.swift in Sources */,
 				493F6DD620EB3C3A002B8120 /* DropDownView.swift in Sources */,
+				49C2C4FE210DBC4300BEEE9B /* NetworkRequest.swift in Sources */,
+				498CEBA62109B61600E8AEFF /* NewAccountPresenter.swift in Sources */,
 				49F043FD20FA7B7F00C48E10 /* NewOperationPresenter.swift in Sources */,
 				5DBEDDB721073B72004F59C0 /* ArrayExtension.swift in Sources */,
 				49B808EB2106F5920097080A /* NewOperationConfigurator.swift in Sources */,
 				49F0440120FA7BC500C48E10 /* LoginViewController.swift in Sources */,
 				49C5F8BA20FDA6FA001386AC /* CheckProfileRouter.swift in Sources */,
+				498CEBAA2109B63000E8AEFF /* NewAccountRouter.swift in Sources */,
 				49B808E92106F3DC0097080A /* AccountsConfigurator.swift in Sources */,
+				49C2C502210DBD5A00BEEE9B /* DTO.swift in Sources */,
 				49F043EB20FA5C8700C48E10 /* User.swift in Sources */,
-				49C11B2A20FBD57D00715403 /* UIView.swift in Sources */,
+				49C11B2A20FBD57D00715403 /* UIViewExtensions.swift in Sources */,
 				495BCCA92100FAD800F53664 /* CheckProfileProtocols.swift in Sources */,
 				49B808E72106ED270097080A /* LoginConfigurator.swift in Sources */,
 				49F043ED20FA5C9100C48E10 /* Operation.swift in Sources */,

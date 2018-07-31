@@ -2,28 +2,39 @@ import Foundation
 
 class NewOperationPresenter {
 
-    var operationType: Int
+    var operationType: OperationModel.Types
 
     unowned let view: NewOperationViewProtocol
     var interactor: NewOperationInteractorProtocol! 
     let router: NewOperationRouterProtocol
     
-    let accounts: [Account]
+    let accounts: [AccountModel]
     var firstAccount = 0
     var secondAccount = 0
     var sum = ""
     var comment = ""
     
-    enum Field: Int {
+    enum Sections: Int {
         case firstAccount
         case secondAccount
         case sum
         case comment
     }
+
+    let sections: [Sections] = [.firstAccount, .secondAccount, .sum, .comment]
     
-    init(view: NewOperationViewController, router: NewOperationRouterProtocol, operationType: Int, accounts: [Account]) {
+    init(view: NewOperationViewProtocol,
+         router: NewOperationRouterProtocol,
+         operationType: Int,
+         accounts: [AccountModel]) {
+
+        if let operationType = OperationModel.types.item(at: operationType) {
+            self.operationType = operationType
+        } else {
+            self.operationType = .income
+        }
+
         self.view = view
-        self.operationType = operationType
         self.router = router
         self.accounts = accounts
     }
@@ -33,24 +44,69 @@ class NewOperationPresenter {
 
 extension NewOperationPresenter: NewOperationPresenterProtocol
 {
-    func shouldChangeCharacters(in range: NSRange, replacementString string: String, tag: Int) -> Bool {
-        
-        switch tag {
-        case Field.sum.rawValue:
+    var accountsCount: Int {
+        return accounts.count
+    }
+
+    var allowTransfer: Bool {
+        return accounts.count > 1
+    }
+
+    var firstAccountTag: Int {
+        guard let tag = sections.index(of: .firstAccount) else {
+            return -1
+        }
+        return tag
+    }
+
+    var secondAccountTag: Int {
+        guard let tag = sections.index(of: .secondAccount) else {
+            return -1
+        }
+        return tag
+    }
+
+    var sumTag: Int {
+        guard let tag = sections.index(of: .sum) else {
+            return -1
+        }
+        return tag
+    }
+
+    var commentTag: Int {
+        guard let tag = sections.index(of: .comment) else {
+            return -1
+        }
+        return tag
+    }
+
+    func shouldChangeCharacters(in range: NSRange,
+                                replacementString string: String,
+                                tag: Int) -> Bool {
+
+        guard let cell = self.sections.item(at: tag) else
+        {
+            return false
+        }
+
+        switch cell
+        {
+        case .sum:
             guard let textRange = Range(range, in: sum) else
             {
                 return false
             }
             sum = sum.replacingCharacters(in: textRange, with: string)
-            
-        case Field.comment.rawValue:
+
+        case .comment:
             guard let textRange = Range(range, in: comment) else
             {
                 return false
             }
             comment = comment.replacingCharacters(in: textRange, with: string)
-            
-        default:
+        case .firstAccount:
+            return false
+        case .secondAccount:
             return false
         }
         
@@ -58,114 +114,136 @@ extension NewOperationPresenter: NewOperationPresenterProtocol
     }
     
     func didSelectAccount(tag: Int, row: Int) {
-        switch tag {
-        case Field.firstAccount.rawValue:
+
+        guard let cell = self.sections.item(at: tag) else
+        {
+            return
+        }
+
+        switch cell {
+        case .firstAccount:
             firstAccount = row
-        case Field.secondAccount.rawValue:
+        case .secondAccount:
             secondAccount = row
-        default:
+        case .sum:
+            return
+        case .comment:
             return
         }
     }
-    
-    var firstAccountTag: Int {
-        return Field.firstAccount.rawValue
-    }
-    
-    var secondAccountTag: Int {
-        return Field.secondAccount.rawValue
-    }
-    
-    var sumTag: Int {
-        return Field.sum.rawValue
-    }
-    
-    var commentTag: Int {
-        return Field.comment.rawValue
-    }
 
     func accountName(for row: Int) -> String {
-        return "\(accounts[row].description)"
+        let account = accounts[row]
+        return "\(account.description) \(account.sum) ₽"
     }
-    
-    var accountsCount: Int {
-        return accounts.count
-    }
-    
+
     func operationTypeChanged(id: Int) {
-        if (operationType == Operation.Types.transfer.rawValue) {
+        guard let newOperationType = OperationModel.types.item(at: id) else {
+            return
+        }
+
+        let previousTypeIsTransfer = operationType == .transfer
+        let selectedTypeIsTransfer = newOperationType == .transfer
+
+        if previousTypeIsTransfer {
             transferDidDeselected()
-        } else if (id == Operation.Types.transfer.rawValue) {
+        } else if selectedTypeIsTransfer {
             transferDidSelected()
         }
-        operationType = id
+
+        operationType = newOperationType
     }
     
     func prepareView() {
-        if (operationType != Operation.Types.transfer.rawValue) {
+        let selectedTypeIsNotTransfer = operationType != .transfer
+        if selectedTypeIsNotTransfer {
             transferDidDeselected()
         }
     }
 
     private func transferDidSelected() {
-        view.setConfiguration(firstAccountLabelText: "Счет списания", secondAccountLabelText: "Счет пополнения", secondAccountIsHidden: false)
+        view.setConfiguration(
+            firstAccountLabelText: "Счет списания",
+            secondAccountLabelText: "Счет пополнения",
+            secondAccountIsHidden: false)
     }
     
     private func transferDidDeselected() {
-        view.setConfiguration(firstAccountLabelText: "Счет", secondAccountLabelText: "", secondAccountIsHidden: true)
+        view.setConfiguration(
+            firstAccountLabelText: "Счет",
+            secondAccountLabelText: "",
+            secondAccountIsHidden: true)
     }
     
-    func save() {
-        if sum.isEmpty || comment.isEmpty {
-            view.showAlert(with: "Заполните все поля!", handler: nil)
+    func savePressed() {
+        if self.sum.isEmpty || comment.isEmpty {
+            view.showAlert(
+                with: "Заполните все поля!",
+                handler: nil)
             return
         }
 
-        
-        let onSuccess: (Any) -> () = { _ in
+        let sum = Int(self.sum) ?? 0
+        let firstAccount = accounts[self.firstAccount]
+
+        let enoughFunds = operationType == .income || sum <= firstAccount.sum
+
+        if !enoughFunds {
+            view.showAlert(
+                with: "Недостаточно средств на счете!",
+                handler: nil)
+            return
+        }
+
+
+        let onSuccess: () -> () = { [weak self] in
             let handler = { [weak self] in
                 self?.router.popView()
             }
             
-            self.view.showAlert(with: "Оперция успешно создана.", handler: handler)
+            self?.view.showAlert(
+                with: "Оперция успешно создана.",
+                handler: handler)
         }
 
-        let onFailure = {
-//            self.view.showAlert(with: "Произошла ошибка при создании операции. Пожалуйста, проверьте все поля.", handler: nil)
-            let handler = { [weak self] in
-                self?.router.popView()
-            }
-
-            self.view.showAlert(with: "Оперция успешно создана.", handler: handler) // !!
-
+        let onFailure: () -> ()  = { [weak self] in
+            self?.view.showAlert(
+                with: "Произошла ошибка при создании операции. Пожалуйста, проверьте все поля.",
+                handler: nil)
         }
-        
-        var credentials: [String: Any] = [
-            "sum": Int(sum) ?? 0,
-            "comment": comment
-        ]
-
-        let headers = [
-            "Authorization": "Bearer \(token ?? "")"
-        ]
-
 
         switch operationType {
-        case Operation.Types.income.rawValue:
-            credentials["accountId"] = accounts[firstAccount].id
-            interactor.createIncome(credentials: credentials, headers: headers, onSuccess: onSuccess, onFailure: onFailure)
-            
-        case Operation.Types.outgo.rawValue:
-            credentials["accountId"] = accounts[firstAccount].id
-            interactor.createOutgo(credentials: credentials, headers: headers, onSuccess: onSuccess, onFailure: onFailure)
-            
-        case Operation.Types.transfer.rawValue:
-            credentials["firstAccountId"] = accounts[firstAccount].id
-            credentials["secondAccountId"] = accounts[secondAccount].id
-            interactor.createTransfer(credentials: credentials, headers: headers, onSuccess: onSuccess, onFailure: onFailure)
-            
-        default:
-            return
+        case .income:
+            let dto = IncomeOutgoDto(
+                sum: sum,
+                comment: comment,
+                accountId: firstAccount.id)
+            interactor.createIncome(
+                dto: dto,
+                onSuccess: onSuccess,
+                onFailure: onFailure)
+
+        case .outgo:
+            let dto = IncomeOutgoDto(
+                sum: sum,
+                comment: comment,
+                accountId: firstAccount.id)
+            interactor.createOutgo(
+                dto: dto,
+                onSuccess: onSuccess,
+                onFailure: onFailure)
+
+        case .transfer:
+            let secondId = accounts[secondAccount].id
+            let dto = TransferDto(
+                sum: sum,
+                comment: comment,
+                firstAccountId: firstAccount.id,
+                secondAccountId: secondId)
+            interactor.createTransfer(
+                dto: dto,
+                onSuccess: onSuccess,
+                onFailure: onFailure)
         }
     }
 }

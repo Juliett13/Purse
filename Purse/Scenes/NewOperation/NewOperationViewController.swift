@@ -23,7 +23,12 @@ class NewOperationViewController: UIViewController, Reusable {
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
-        configurator.configure(view: self)
+        let backButton = UIBarButtonItem(
+            title: "Назад",
+            style: .plain,
+            target: nil,
+            action: nil)
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
 
         firstAccountPickerView.dataSource = self
         secondAccountPickerView.dataSource = self
@@ -40,8 +45,13 @@ class NewOperationViewController: UIViewController, Reusable {
         sumTextField.delegate = self
         commentTextField.delegate = self
         
-        operationTypeSegmentControl.selectedSegmentIndex = presenter.operationType
+        operationTypeSegmentControl.selectedSegmentIndex = OperationModel.types.index(of: presenter.operationType) ?? 0
         presenter.prepareView()
+
+        guard let transferIndex = OperationModel.types.index(of: .transfer) else {
+            return
+        }
+        operationTypeSegmentControl.setEnabled(presenter.allowTransfer, forSegmentAt: transferIndex)
     }
     
     override func viewDidLayoutSubviews() {
@@ -57,16 +67,16 @@ extension NewOperationViewController {
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
-        presenter.save()
+        presenter.savePressed()
     }
-    
-    
 }
 
 // MARK: - NewOperationViewProtocol
 
 extension NewOperationViewController: NewOperationViewProtocol {
-    func setConfiguration(firstAccountLabelText: String, secondAccountLabelText: String, secondAccountIsHidden: Bool) {
+    func setConfiguration(firstAccountLabelText: String,
+                          secondAccountLabelText: String,
+                          secondAccountIsHidden: Bool) {
         let maxDistance = 3 * minDistance + secondAccountPickerView.layer.frame.height + secondAccountLabel.layer.frame.height
         let verticalSpacing = secondAccountIsHidden ? minDistance : maxDistance
         firstAccountLabel.text = firstAccountLabelText
@@ -76,10 +86,17 @@ extension NewOperationViewController: NewOperationViewProtocol {
         constraint.constant = verticalSpacing
     }
     
-    func showAlert(with message: String, handler: (() -> ()?)?) {
-        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {action in
-            handler?()
+    func showAlert(with message: String,
+                   handler: (() -> ()?)?) {
+        let alert = UIAlertController(
+            title: "",
+            message: message,
+            preferredStyle: .alert)
+        alert.addAction(UIAlertAction(
+            title: "Ok",
+            style: .default,
+            handler: {action in
+                handler?()
         }))
         self.present(alert, animated: true)
     }
@@ -92,15 +109,20 @@ extension NewOperationViewController: UIPickerViewDataSource, UIPickerViewDelega
         return 1
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView,
+                    numberOfRowsInComponent component: Int) -> Int {
         return presenter.accountsCount
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView,
+                    titleForRow row: Int,
+                    forComponent component: Int) -> String? {
         return presenter.accountName(for: row)
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView,
+                    didSelectRow row: Int,
+                    inComponent component: Int) {
         presenter.didSelectAccount(tag: pickerView.tag, row: row)
     }
 }
@@ -113,15 +135,12 @@ extension NewOperationViewController: UITextFieldDelegate {
         return false
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
-    {
-        return presenter.shouldChangeCharacters(in: range, replacementString: string, tag: textField.tag)
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+
+        return presenter.shouldChangeCharacters(
+            in: range, replacementString: string,
+            tag: textField.tag)
     }
 }
-
-
-
-
-
-
-

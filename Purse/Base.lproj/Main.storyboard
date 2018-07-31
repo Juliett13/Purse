@@ -23,7 +23,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5uQ-Yq-yqW">
                                         <rect key="frame" x="55" y="10" width="265" height="65"/>
-                                        <color key="backgroundColor" white="0.87959902510683763" alpha="0.28935339095744683" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                         <state key="normal" title="Да">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -183,7 +183,7 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bsn-OO-wpZ">
                                 <rect key="frame" x="112" y="349" width="150" height="45"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="0.28935339100000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="iiH-FE-uDY"/>
                                     <constraint firstAttribute="width" constant="150" id="mX0-Pl-jpx"/>
@@ -246,7 +246,7 @@
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rh1-9p-9kK">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" delaysContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rh1-9p-9kK">
                                 <rect key="frame" x="5" y="243" width="365" height="376"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -352,7 +352,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="jlB-6B-qEH">
-                        <barButtonItem key="leftBarButtonItem" title="Exit" id="iBt-Zq-AZI">
+                        <barButtonItem key="leftBarButtonItem" title="Выход" id="iBt-Zq-AZI">
                             <connections>
                                 <action selector="exitButtonPressed:" destination="BYZ-38-t0r" id="5Kk-Kn-Syb"/>
                             </connections>
@@ -365,15 +365,82 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="exitButton" destination="iBt-Zq-AZI" id="YJe-eL-SYg"/>
                         <outlet property="operationTypeSegmentedControl" destination="3ct-wJ-Hk7" id="I8j-qO-AhQ"/>
+                        <outlet property="operationsButton" destination="wDm-LZ-k5q" id="QZc-dw-MeS"/>
                         <outlet property="operationsTableView" destination="rh1-9p-9kK" id="3NG-uT-LSd"/>
                         <outlet property="sumLabel" destination="qqx-Ap-Szh" id="S4I-8o-vHX"/>
                         <segue destination="DFm-m1-QJV" kind="show" id="xfy-qz-FlG"/>
+                        <segue destination="YUT-G3-9g4" kind="show" id="Fog-Ok-H9N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1288.8" y="133.5832083958021"/>
+        </scene>
+        <!--New Account View Controller-->
+        <scene sceneID="88j-yC-2Au">
+            <objects>
+                <viewController storyboardIdentifier="NewAccountViewController" id="YUT-G3-9g4" customClass="NewAccountViewController" customModule="Purse" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cEE-Pr-3Wl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название счета" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nxa-jd-4mz">
+                                <rect key="frame" x="32" y="89" width="126.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PFU-DY-bdf">
+                                <rect key="frame" x="32" y="111.5" width="311" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v25-Dg-U8N">
+                                <rect key="frame" x="32" y="174.5" width="311" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Баланс" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zlJ-qb-K21">
+                                <rect key="frame" x="32" y="151.5" width="57.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="v25-Dg-U8N" firstAttribute="leading" secondItem="nxa-jd-4mz" secondAttribute="leading" id="2Us-CA-DZf"/>
+                            <constraint firstItem="zlJ-qb-K21" firstAttribute="top" secondItem="PFU-DY-bdf" secondAttribute="bottom" constant="10" id="GId-Ch-aVy"/>
+                            <constraint firstItem="nxa-jd-4mz" firstAttribute="top" secondItem="Bzy-Xf-Swt" secondAttribute="top" constant="25" id="I4J-Ac-rEc"/>
+                            <constraint firstItem="v25-Dg-U8N" firstAttribute="top" secondItem="zlJ-qb-K21" secondAttribute="bottom" constant="2" id="Jc1-ll-AbL"/>
+                            <constraint firstItem="PFU-DY-bdf" firstAttribute="top" secondItem="nxa-jd-4mz" secondAttribute="bottom" constant="2" id="QV0-Fq-RvJ"/>
+                            <constraint firstItem="v25-Dg-U8N" firstAttribute="trailing" secondItem="PFU-DY-bdf" secondAttribute="trailing" id="alr-Sm-vL1"/>
+                            <constraint firstItem="nxa-jd-4mz" firstAttribute="leading" secondItem="Bzy-Xf-Swt" secondAttribute="leading" constant="32" id="asv-Ze-ExD"/>
+                            <constraint firstItem="zlJ-qb-K21" firstAttribute="leading" secondItem="nxa-jd-4mz" secondAttribute="leading" id="dni-tK-1z0"/>
+                            <constraint firstItem="PFU-DY-bdf" firstAttribute="leading" secondItem="nxa-jd-4mz" secondAttribute="leading" id="icv-ff-O9O"/>
+                            <constraint firstItem="Bzy-Xf-Swt" firstAttribute="trailing" secondItem="PFU-DY-bdf" secondAttribute="trailing" constant="32" id="qjH-eK-Stw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Bzy-Xf-Swt"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Qf3-tv-t8I">
+                        <barButtonItem key="rightBarButtonItem" title="Сохранить" id="Oxs-LL-elu">
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="YUT-G3-9g4" id="1m0-Kq-w2Z"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="accountNameTextField" destination="PFU-DY-bdf" id="snZ-2B-b7K"/>
+                        <outlet property="balanceTextField" destination="v25-Dg-U8N" id="ubE-sU-ief"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qEe-8Z-LE4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1288.8" y="933.28335832083962"/>
         </scene>
         <!--New Operation View Controller-->
         <scene sceneID="7eD-hs-gRC">
@@ -502,7 +569,7 @@
                         <viewLayoutGuide key="safeArea" id="YBy-Hg-0Ft"/>
                     </view>
                     <navigationItem key="navigationItem" id="9qv-p7-0G1">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="EWJ-NZ-f7g">
+                        <barButtonItem key="rightBarButtonItem" title="Сохранить" id="EWJ-NZ-f7g">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="saveButtonPressed:" destination="DFm-m1-QJV" id="b6D-35-JT0"/>

@@ -11,7 +11,14 @@ class LoginViewController: UIViewController, Reusable {
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
-        configurator.configure(view: self)
+
+        let backButton = UIBarButtonItem(
+            title: "Назад",
+            style: .plain,
+            target: nil,
+            action: nil)
+
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         presenter.configureButton()
     }
 }
@@ -31,10 +38,19 @@ extension LoginViewController: LoginViewProtocol {
         button.setTitle(text, for: .normal) 
     }
     
-    func showAlert(with message: String, handler: (() -> ()?)?) {
-        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {action in
-            handler?()
+    func showAlert(with message: String,
+                   handler: (() -> ()?)?) {
+
+        let alert = UIAlertController(
+            title: "",
+            message: message,
+            preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(
+            title: "Ok",
+            style: .default,
+            handler: {action in
+                handler?()
         }))
         self.present(alert, animated: true)
     }
@@ -48,8 +64,14 @@ extension LoginViewController: UITextFieldDelegate {
         return false
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return presenter.shouldChangeCharacters(in: range, replacementString: string, for: textField.tag)
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+
+        return presenter.shouldChangeCharacters(
+            in: range,
+            replacementString: string,
+            for: textField.tag)
     }
 }
 
@@ -58,21 +80,24 @@ extension LoginViewController: UITextFieldDelegate {
 
 extension LoginViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
         return presenter.fieldsCount
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell: LoginTableViewCell = tableView.dequeueReusableCell(for: indexPath)
-            else {
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell: LoginTableViewCell = tableView.dequeueReusableCell(for: indexPath) else {
             return UITableViewCell()
         }
         let fieldName = presenter.fieldName(for: indexPath.row)
         let isSecure = presenter.fieldIsSecure(for: indexPath.row)
-        /**
-         REVIEW: Practice shows that using tag is not a good approach, especially based on indexPath, but now it is acceptable. 
-         */
-        cell.configure(tag: indexPath.row, isSecure: isSecure, placeholder: fieldName)
+
+        cell.configure(
+            tag: indexPath.row,
+            isSecure: isSecure,
+            placeholder: fieldName)
+
         return cell
     }
 }

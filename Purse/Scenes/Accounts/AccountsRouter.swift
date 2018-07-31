@@ -12,15 +12,26 @@ class AccountsRouter {
 
 extension AccountsRouter: AccountsRouterProtocol
 {
-    func pushNewOperationView(with operationType: Operation.Types, accounts: [Account]) {
-        guard
-            let view = view,
-            let targetView: NewOperationViewController = view.storyboard?.instantiateViewController()  else {
-                return
+    func pushNewAccountView() {
+        guard let view = view else {
+            return
         }
 
-        targetView.configurator = NewOperationConfigurator(operationType: operationType, accounts: accounts)
+        let configurator = NewAccountConfigurator()
 
-        view.navigationController?.pushViewController(targetView, animated: true)
+        view.navigationController?.pushViewController(configurator.viewController, animated: true)
+    }
+
+    func pushNewOperationView(with operationType: OperationModel.Types, accounts: [AccountModel]) {
+        guard let view = view else {
+            return
+        }
+
+        let configurator = NewOperationConfigurator(operationType: operationType, accounts: accounts)
+        view.navigationController?.pushViewController(configurator.viewController, animated: true)
+    }
+
+    func popToRootView() {
+        view?.navigationController?.popToRootViewController(animated: true)
     }
 }

@@ -13,7 +13,9 @@ class LoginTableViewCell: UITableViewCell, Reusable {
 // MARK: - LoginTableViewCellInfoDisplayProtocol
 
 extension LoginTableViewCell: LoginTableViewCellInfoDisplayProtocol {
-    func configure(tag: Int, isSecure: Bool, placeholder: String) {
+    func configure(tag: Int,
+                   isSecure: Bool,
+                   placeholder: String) {
         textField.tag = tag
         textField.isSecureTextEntry = isSecure
         textField.placeholder = placeholder

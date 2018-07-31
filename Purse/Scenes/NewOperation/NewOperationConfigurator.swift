@@ -1,24 +1,27 @@
-protocol NewOperationConfiguratorProtocol {
-    func configure(view: NewOperationViewController)
-}
+import UIKit
 
 // MARK: - NewOperationConfiguratorProtocol
 
 class NewOperationConfigurator: NewOperationConfiguratorProtocol {
 
-    let operationType: Operation.Types
-    let accounts: [Account]
+    var viewController: UIViewController
 
-    init(operationType: Operation.Types, accounts: [Account]) {
-        self.operationType = operationType
-        self.accounts = accounts
-    }
+    required init(operationType: OperationModel.Types, accounts: [AccountModel]) {
+        let newOperationView: NewOperationViewController? = UIStoryboard(storyboard: .main).instantiateViewController()
+        guard let view = newOperationView else {
+            viewController = UIViewController()
+            return
+        }
 
-    func configure(view: NewOperationViewController) {
         let router = NewOperationRouter(view: view)
-        let presenter = NewOperationPresenter(view: view, router: router, operationType: operationType.rawValue, accounts: accounts)
+        let presenter = NewOperationPresenter(
+            view: view,
+            router: router,
+            operationType: operationType.rawValue,
+            accounts: accounts)
         let interactor = NewOperationInteractor(presenter: presenter)
         view.presenter = presenter
         presenter.interactor = interactor
+        viewController = view
     }
 }
